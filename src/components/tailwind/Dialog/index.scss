@@ -1,0 +1,6 @@
+@import "./src/styles/animations/popup.scss";
+.t-dialog {
+  &-transition {
+    animation: popup 0.1s;
+  }
+}

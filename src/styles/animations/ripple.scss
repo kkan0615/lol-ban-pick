@@ -1,0 +1,15 @@
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+
+  &:hover {
+    background: #f7f7f8 radial-gradient(circle, transparent 1%, #f7f7f8 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: #5e5d5d;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
