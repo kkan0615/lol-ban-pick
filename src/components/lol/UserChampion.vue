@@ -31,7 +31,7 @@ import TListItemContent from '@/components/tailwind/List/components/itemContent.
 import TListItemContentTittle from '@/components/tailwind/List/components/itemContentTittle.vue'
 
 export default defineComponent({
-  name: 'UserChampion',
+  name: 'UserPicker',
   components: { TListItemContentTittle, TListItemContent, TListItemAvatar, TListItem, TList },
   props: {
     selectTurn: {

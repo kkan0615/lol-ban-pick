@@ -3,8 +3,11 @@ import { ApplicationMutations, ApplicationMutationTypes } from './mutations'
 import { ApplicationState } from './state'
 import { RootState } from '@/store'
 import { SnackbarOption } from '@/interfaces/system/snackbar'
+import { LolLanguagesEnum } from '@/interfaces/model/lol'
 
 export enum ApplicationActionTypes {
+  SET_LOL_VERSION = 'APPLICATION_SET_LOL_VERSION',
+  SET_LOL_LANGUAGE = 'APPLICATION_SET_LOL_LANGUAGE',
   CHANGE_NAVIGATOR = 'APPLICATION_CHANGE_NAVIGATOR',
   SET_NAVIGATOR = 'APPLICATION_SET_NAVIGATOR',
   CHANGE_SUB_NAVIGATOR = 'APPLICATION_CHANGE_SUB_NAVIGATOR',
@@ -23,6 +26,14 @@ export type AugmentedActionContext = {
 } & Omit<ActionContext<ApplicationState, RootState>, 'commit'>
 
 export interface ApplicationActions {
+  [ApplicationActionTypes.SET_LOL_VERSION](
+    { commit }: AugmentedActionContext,
+    payload: string
+  ): void
+  [ApplicationActionTypes.SET_LOL_LANGUAGE](
+    { commit }: AugmentedActionContext,
+    payload: LolLanguagesEnum
+  ): void
   [ApplicationActionTypes.CHANGE_NAVIGATOR](
     { commit }: AugmentedActionContext,
   ): void
@@ -54,6 +65,12 @@ export interface ApplicationActions {
 }
 
 export const applicationActions: ActionTree<ApplicationState, RootState> & ApplicationActions = {
+  [ApplicationActionTypes.SET_LOL_VERSION] ({ commit }, payload) {
+    commit(ApplicationMutationTypes.SET_LOL_VERSION, payload)
+  },
+  [ApplicationActionTypes.SET_LOL_LANGUAGE] ({ commit }, payload) {
+    commit(ApplicationMutationTypes.SET_LOL_LANGUAGE, payload)
+  },
   [ApplicationActionTypes.CHANGE_NAVIGATOR] ({ commit }) {
     commit(ApplicationMutationTypes.CHANGE_NAVIGATOR)
   },

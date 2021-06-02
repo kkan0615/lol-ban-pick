@@ -3,7 +3,7 @@
     class="h-full w-full"
   >
     <div
-      class="flex flex-col"
+      class="h-full flex flex-col"
     >
       <appbar-general-layout
         class="flex-shrink"
