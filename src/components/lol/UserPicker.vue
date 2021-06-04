@@ -1,19 +1,25 @@
 <template>
   <div
-    class="rounded-t border-2 h-full"
+    class="rounded-t border-2"
   >
     <div
-      class="flex items-center px-2 py-1 border-transparent relative h-full"
+      class="flex items-center border-transparent h-full"
     >
+      <div
+        class="w-2 h-full bg-primary-500 mr-2"
+      />
       <!--      <div-->
       <!--        class="rounded-full w-12 h-12 ring"-->
       <!--      >-->
-      <img
-        class="rounded-full w-16 h-16 ring"
-        src="http://ddragon.leagueoflegends.com/cdn/11.11.1/img/champion/Ahri.png"
-        alt="ahri"
+      <div
+        class="py-1 px-2"
       >
-      <!--      </div>-->
+        <img
+          class="rounded-full w-16 h-16 ring"
+          src="http://ddragon.leagueoflegends.com/cdn/11.11.1/img/champion/Ahri.png"
+          alt="ahri"
+        >
+      </div>
     </div>
   </div>
 </template>

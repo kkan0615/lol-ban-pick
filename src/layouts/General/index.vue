@@ -6,10 +6,10 @@
       class="h-full flex flex-col"
     >
       <appbar-general-layout
-        class="flex-shrink"
+        class="flex-shrink flex-grow-0"
       />
       <div
-        class="flex-grow"
+        class="flex-grow flex-shrink-0"
       >
         <router-view
           v-slot="{ Component }"

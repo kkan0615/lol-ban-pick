@@ -1,18 +1,24 @@
 <template>
   <div
-    class="h-full flex flex-col gap-y-2"
+    class="flex flex-col gap-y-2 h-full"
   >
     <div
-      class="text-blue-500 font-bold"
+      class="text-blue-500 font-bold flex-shrink flex-grow-0"
     >
       Blue team
     </div>
-    <lol-team-bans />
-    <user-picker
-      v-for="userPicker in 5"
-      :key="userPicker"
-      class="h-1/5"
+    <lol-team-bans
+      class="flex-shrink"
     />
+    <div
+      class="flex-auto"
+    >
+      <user-picker
+        v-for="userPicker in 5"
+        :key="userPicker"
+        class="h-1/10"
+      />
+    </div>
   </div>
 </template>
 

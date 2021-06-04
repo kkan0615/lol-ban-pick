@@ -2,30 +2,24 @@
   <div
     class="w-full h-full p-2"
   >
-    <!--    RankBankPickLol-->
-    <!--    <user-champion />-->
     <div
-      class="h-full flex-col"
+      class="h-full flex flex-col"
     >
       <header-rank-bank-pick-lol
-        class="flex-shrink p-2"
+        class="flex-shrink flex-grow-0 p-2"
       />
       <div
-        class="flex-grow"
+        class="flex-auto flex gap-x-4"
       >
-        <div
-          class="h-full flex"
-        >
-          <blue-team-rank-bank-pick-lol
-            class="w-1/5"
-          />
-          <champions-rank-bank-pick-lol
-            class="w-3/5"
-          />
-          <red-team-rank-bank-pick-lol
-            class="w-1/5"
-          />
-        </div>
+        <blue-team-rank-bank-pick-lol
+          class="w-1/5"
+        />
+        <champions-rank-bank-pick-lol
+          class="w-3/5"
+        />
+        <red-team-rank-bank-pick-lol
+          class="w-1/5"
+        />
       </div>
     </div>
   </div>
@@ -41,7 +35,7 @@ import HeaderRankBankPickLol from '@/views/lol/banPicks/Rank/components/Header.v
 
 export default defineComponent({
   name: 'RankBankPickLol',
-  components: { HeaderRankBankPickLol, ChampionsRankBankPickLol, BlueTeamRankBankPickLol, RedTeamRankBankPickLol, UserChampion },
+  components: { HeaderRankBankPickLol, ChampionsRankBankPickLol, BlueTeamRankBankPickLol, RedTeamRankBankPickLol },
   setup () {
     return
   }

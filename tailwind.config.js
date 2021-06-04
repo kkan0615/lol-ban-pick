@@ -152,6 +152,14 @@ module.exports = {
       min: 'min-content',
       max: 'max-content',
     },
+    height: theme => ({
+      auto: 'auto',
+      ...theme('spacing'),
+      full: '100%',
+      screen: '100vh',
+      '1/5': '20%',
+      '1/10': '10%',
+    }),
   },
   variants: {
     extend: {},

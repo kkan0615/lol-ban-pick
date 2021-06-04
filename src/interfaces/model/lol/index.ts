@@ -1,4 +1,6 @@
 /** Get versions of lol */
+import { LolChampion } from '@/interfaces/model/lol/Champion'
+
 export const LOL_VERSIONS_URL = 'https://ddragon.leagueoflegends.com/api/versions.json'
 export const LOL_LANGUAGES_URL = 'https://ddragon.leagueoflegends.com/cdn/languages.json'
 export const LOL_LOADING_SCREEN_CHAMPION_URL = 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'
@@ -61,4 +63,13 @@ export enum LolLanguagesEnum {
   zh_CN = 'zh_CN',
   zh_MY = 'zh_MY',
   zh_TW = 'zh_TW',
+}
+
+export type LolChampionReturnData = Record<string, LolChampion>
+
+export interface LolChampionReturn {
+  data: LolChampionReturnData
+  format: string
+  type: 'champion'
+  version: string
 }
