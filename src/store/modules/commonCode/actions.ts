@@ -9,6 +9,7 @@ import { LolChampionReturn, LolChampionWithKey } from '@/interfaces/model/lol'
 export enum CommonCodeActionTypes {
   SET_LOL_CHAMPIONS = 'COMMON_CODE_SET_LOL_CHAMPIONS',
   LOAD_LOL_CHAMPIONS = 'COMMON_CODE_LOAD_LOL_CHAMPIONS',
+  LOAD_LOL_VERSIONS = 'COMMON_CODE_LOAD_LOL_VERSIONS',
 }
 
 export type AugmentedActionContext = {
@@ -26,6 +27,9 @@ export interface CommonCodeActions {
   [CommonCodeActionTypes.LOAD_LOL_CHAMPIONS](
     { commit, state, rootState }: AugmentedActionContext,
   ): void
+  [CommonCodeActionTypes.LOAD_LOL_VERSIONS](
+    { commit, state, rootState }: AugmentedActionContext,
+  ): void
 }
 
 export const commonCodeActions: ActionTree<CommonCodeState, RootState> & CommonCodeActions = {
@@ -39,5 +43,11 @@ export const commonCodeActions: ActionTree<CommonCodeState, RootState> & CommonC
       `/lolCdnApi/${applicationState.lolVersion}/data/${applicationState.lolLanguage}/champion.json`)).data
     console.log(res)
     commit(CommonCodeMutationTypes.SET_LOL_CHAMPIONS, res.data)
+  },
+  async [CommonCodeActionTypes.LOAD_LOL_VERSIONS] ({ commit }) {
+    const res = (await defaultAxios.get<Array<string>>(
+      '/lolApi/versions.json')).data
+    console.log(res)
+    commit(CommonCodeMutationTypes.SET_LOL_VERSIONS, res)
   },
 }

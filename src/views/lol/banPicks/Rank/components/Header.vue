@@ -5,6 +5,8 @@
     <div
       class="ml-auto flex gap-x-2"
     >
+      <lol-language-picker />
+      <version-picker />
       <t-button
         :disabled="currentTurn === 'BAN1'"
         class="h-8 w-16"
@@ -28,10 +30,12 @@ import { computed, defineComponent } from 'vue'
 import TButton from '@/components/tailwind/Button/index.vue'
 import useStore from '@/store'
 import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
+import VersionPicker from '@/components/pickers/Version/index.vue'
+import LolLanguagePicker from '@/components/pickers/Language/index.vue'
 
 export default defineComponent({
   name: 'HeaderRankBankPickLol',
-  components: { TButton },
+  components: { LolLanguagePicker, VersionPicker, TButton },
   setup () {
     const store = useStore()
 

@@ -23,6 +23,13 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/lolCdnApi/, '')
       },
+      '/lolApi': {
+        target: 'http://ddragon.leagueoflegends.com/api',
+        ws: true,
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/lolApi/, '')
+      },
     }
   },
   plugins: [

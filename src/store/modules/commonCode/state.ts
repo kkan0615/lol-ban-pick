@@ -2,6 +2,7 @@ import { LolChampionWithKey } from '@/interfaces/model/lol'
 
 export interface CommonCodeState {
   lolChampions: LolChampionWithKey
+  lolVersions: Array<string>
 }
 
 /**
@@ -9,4 +10,5 @@ export interface CommonCodeState {
  */
 export const commonState: CommonCodeState = {
   lolChampions: {} as LolChampionWithKey,
+  lolVersions: [],
 }
