@@ -1,9 +1,9 @@
 [[redirects]]
   from = "/lolCdnApi"
   to = "http://ddragon.leagueoflegends.com/cdn"
-  status = 304
+  status = 200
 
 [[redirects]]
   from = "/lolApi"
   to = "http://ddragon.leagueoflegends.com/api"
-  status = 304
+  status = 200

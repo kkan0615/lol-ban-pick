@@ -41,13 +41,11 @@ export const commonCodeActions: ActionTree<CommonCodeState, RootState> & CommonC
     const applicationState = rootState.application
     const res = (await defaultAxios.get<LolChampionReturn>(
       `/lolCdnApi/${applicationState.lolVersion}/data/${applicationState.lolLanguage}/champion.json`)).data
-    console.log(res)
     commit(CommonCodeMutationTypes.SET_LOL_CHAMPIONS, res.data)
   },
   async [CommonCodeActionTypes.LOAD_LOL_VERSIONS] ({ commit }) {
     const res = (await defaultAxios.get<Array<string>>(
       '/lolApi/versions.json')).data
-    console.log(res)
     commit(CommonCodeMutationTypes.SET_LOL_VERSIONS, res)
   },
 }
