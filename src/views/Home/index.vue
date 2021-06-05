@@ -1,6 +1,21 @@
 <template>
-  <div>
-    Home
+  <div
+    class="h-full"
+  >
+    <div
+      class="h-full flex justify-center items-center"
+    >
+      <div
+        class="h-1/5 flex justify-center items-center ring p-4 bg-white cursor-pointer hover:shadow-lg"
+        @click="onClickLolRankBanCard"
+      >
+        <div
+          class="text-center"
+        >
+          League Of Legend Rank ban
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,12 +28,12 @@ export default defineComponent({
   setup () {
     const router = useRouter()
 
-    const onClickTest = () => {
-      router.push({ name: 'Playground' })
+    const onClickLolRankBanCard = () => {
+      router.push({ name: 'RankBankPickLol' })
     }
 
     return {
-      onClickTest,
+      onClickLolRankBanCard,
     }
   }
 })
