@@ -1,6 +1,6 @@
 <template>
   <t-appbar
-    class="shadow-lg h-10"
+    class="shadow-lg h-10 bg-primary-500"
     text-color="white"
   >
     <t-button

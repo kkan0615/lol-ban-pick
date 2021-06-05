@@ -32,7 +32,6 @@ export default defineComponent({
   setup (props) {
     const wrapperClasses = computed(() =>{
       return {
-        [`bg-${props.color}`]: true,
         [`text-${props.textColor}`]: !!props.textColor,
       }
     })

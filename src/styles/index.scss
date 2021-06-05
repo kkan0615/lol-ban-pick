@@ -1,21 +1,12 @@
-// noinspection CssInvalidAtRule
 @tailwind base;
-// noinspection CssInvalidAtRule
 @tailwind components;
-// noinspection CssInvalidAtRule
 @tailwind utilities;
 
-@import "./color.scss";
-@import "./layout.scss";
-@import "./button.scss";
+@import "./color";
+@import "./layout";
+@import "./button";
 @import "./animations";
 @import "./filters";
 @import "./icon";
 @import "./input";
 @import "./sizing";
-
-.w {
-  &-standard {
-    max-width: 1024px;
-  }
-}

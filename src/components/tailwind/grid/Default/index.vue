@@ -1,7 +1,6 @@
 <template>
   <div
-    class="grid w-full"
-    :class="gridClasses"
+    class="grid w-full grid-cols-10 gap-4"
   >
     <slot />
   </div>
