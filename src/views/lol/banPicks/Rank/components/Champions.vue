@@ -14,28 +14,17 @@
         />
       </div>
     </div>
-    <!--    <t-grid-->
-    <!--      class="flex-grow flex-shrink-0 h-16 overflow-y-auto"-->
-    <!--      :cols="10"-->
-    <!--    >-->
-    <!--      <champion-rank-bank-pick-lol-->
-    <!--        v-for="champion in champions"-->
-    <!--        :key="champion.key"-->
-    <!--        :champion="champion"-->
-    <!--        @click:champion="onClickChampion"-->
-    <!--      />-->
-    <!--    </t-grid>-->
-    <div
-      class="flex-grow flex-shrink-0 h-16 overflow-y-auto flex items-start flex-wrap gap-1"
+    <t-grid
+      class="flex-grow flex-shrink-0 h-16 overflow-y-auto"
+      :cols="10"
     >
       <champion-rank-bank-pick-lol
         v-for="champion in champions"
         :key="champion.key"
-        class="w-1/12"
         :champion="champion"
         @click:champion="onClickChampion"
       />
-    </div>
+    </t-grid>
   </div>
 </template>
 
@@ -47,10 +36,11 @@ import ChampionRankBankPickLol from '@/views/lol/banPicks/Rank/components/Chamip
 import TTextInput from '@/components/tailwind/input/Text/index.vue'
 import { LolChampion } from '@/interfaces/model/lol/Champion'
 import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
+import { LolChampionWithKey } from '@/interfaces/model/lol'
 
 export default defineComponent({
   name: 'ChampionsRankBankPickLol',
-  components: { TTextInput, ChampionRankBankPickLol },
+  components: { TTextInput, ChampionRankBankPickLol, TGrid },
   setup () {
     const store = useStore()
 
@@ -59,7 +49,7 @@ export default defineComponent({
     const champions = computed(() => Object.values(store.state.commonCode.lolChampions)
       .sort((a, b) => a.name.localeCompare(b.name)).filter(champion => champion.name.includes(searchInput.value)))
 
-    const onClickChampion = async (champion: LolChampion) => {
+    const onClickChampion = async (champion: LolChampionWithKey) => {
       await store.dispatch(LolRanKBanActionTypes.HANDLE_CHAMPION_CLICK, champion)
       searchInput.value = ''
     }
