@@ -65,10 +65,10 @@ export enum LolLanguagesEnum {
   zh_TW = 'zh_TW',
 }
 
-export type LolChampionReturnData = Record<string, LolChampion>
+export type LolChampionWithKey = Record<string, LolChampion>
 
 export interface LolChampionReturn {
-  data: LolChampionReturnData
+  data: LolChampionWithKey
   format: string
   type: 'champion'
   version: string

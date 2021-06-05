@@ -1,24 +1,49 @@
 <template>
   <div
-    class="w-full flex gap-x-2"
+    class="w-full flex gap-x-4"
   >
-    <img
-      v-for="i in 5"
-      :key="i"
-      class="w-6 h-6 ring"
-      src="http://ddragon.leagueoflegends.com/cdn/11.11.1/img/champion/Nidalee.png"
-      alt="Nidalee"
+    <div
+      v-for="(ban, index) in bansProp"
+      :key="index"
     >
+      <lol-team-bans-ban
+        :ring-color="ringColor"
+        :ban="ban"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
+import { LolChampionWithKey } from '@/interfaces/model/lol'
+import LolTeamBansBan from '@/components/lol/TeamBans/components/Ban.vue'
 
 export default defineComponent({
   name: 'LolTeamBans',
-  setup () {
-    return
+  components: { LolTeamBansBan },
+  props: {
+    bans: {
+      type: Object,
+      required: false,
+      default: () => {},
+    },
+    ringColor: {
+      type: String,
+      required: true,
+      default: '',
+    }
+  },
+  setup (props) {
+    const bansProp = props.bans as Array<LolChampionWithKey>
+
+    onMounted(() => {
+      console.log(bansProp)
+    })
+
+    return {
+      bansProp,
+    }
   }
 })
 </script>

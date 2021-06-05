@@ -6,7 +6,10 @@
       class="flex items-center border-transparent h-full"
     >
       <div
-        class="w-2 h-full bg-primary-500 mr-2"
+        class="w-2 h-full mr-2"
+        :class="{
+          [`bg-${color}-500`]: selectTurn,
+        }"
       />
       <!--      <div-->
       <!--        class="rounded-full w-12 h-12 ring"-->
@@ -35,11 +38,11 @@ export default defineComponent({
       required: false,
       default: false,
     },
-    ringColor: {
+    color: {
       type: String,
       required: false,
       default: 'primary-500',
-    }
+    },
   },
   setup () {
     return

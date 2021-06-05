@@ -1,15 +1,12 @@
-import { SnackbarOption } from '@/interfaces/system/snackbar'
-import { DEFAULT_LOL_VERSION, LolChampionReturnData, LolLanguagesEnum } from '@/interfaces/model/lol'
-import { LocalStorageKeyEnum } from '@/interfaces/system/localStorage'
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampionWithKey } from '@/interfaces/model/lol'
 
 export interface CommonCodeState {
-  lolChampions: LolChampionReturnData
+  lolChampions: LolChampionWithKey
 }
 
 /**
  * navigator
  */
 export const commonState: CommonCodeState = {
-  lolChampions: {} as LolChampionReturnData,
+  lolChampions: {} as LolChampionWithKey,
 }

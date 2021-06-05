@@ -7,6 +7,7 @@
     >
       <t-button
         class="h-8 w-16"
+        @click="onClickPrevButton"
       >
         prev
       </t-button>
@@ -22,7 +23,12 @@ export default defineComponent({
   name: 'HeaderRankBankPickLol',
   components: { TButton },
   setup () {
-    return
+    const onClickPrevButton = () => {
+      alert('onClickPrevButton')
+    }
+    return {
+      onClickPrevButton,
+    }
   }
 })
 </script>
