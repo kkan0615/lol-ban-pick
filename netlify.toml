@@ -1,10 +1,9 @@
 [[redirects]]
   from = "/lolCdnApi"
   to = "http://ddragon.leagueoflegends.com/cdn"
-  status = 200
+  status = 304
 
-## This rule redirects to an external API, signing requests with a secret
 [[redirects]]
   from = "/lolApi"
   to = "http://ddragon.leagueoflegends.com/api"
-  status = 200
+  status = 304
