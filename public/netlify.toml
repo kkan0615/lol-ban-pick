@@ -1,9 +1,16 @@
 [[redirects]]
-  from = "/lolCdnApi"
+  from = "/lolCdnApi/*"
   to = "http://ddragon.leagueoflegends.com/cdn"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/lolApi"
+  from = "/lolApi/*"
   to = "http://ddragon.leagueoflegends.com/api"
   status = 200
+  force = true
+  
+[[redirects]]
+  from = '/*'
+  status = 200
+  to = '/index.html'
