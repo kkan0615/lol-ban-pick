@@ -1,12 +1,12 @@
 [[redirects]]
   from = "/lolCdnApi/*"
-  to = "http://ddragon.leagueoflegends.com/cdn"
+  to = "http://ddragon.leagueoflegends.com/cdn/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/lolApi/*"
-  to = "http://ddragon.leagueoflegends.com/api"
+  to = "http://ddragon.leagueoflegends.com/api/:splat"
   status = 200
   force = true
   
