@@ -10,3 +10,7 @@
   status = 200
   force = true
   
+[[redirects]]
+  from = '/*'
+  status = 200
+  to = '/index.html'
