@@ -18,5 +18,6 @@ export type LolRankBanOrderType =
   'PICK7' |
   'PICK8' |
   'PICK9' |
-  'PICK10'
+  'PICK10' |
+  'DONE'
 
