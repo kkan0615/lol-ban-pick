@@ -14,17 +14,28 @@
         />
       </div>
     </div>
-    <t-grid
-      class="flex-grow flex-shrink-0 h-16 overflow-y-auto"
-      :cols="10"
+    <!--    <t-grid-->
+    <!--      class="flex-grow flex-shrink-0 h-16 overflow-y-auto"-->
+    <!--      :cols="10"-->
+    <!--    >-->
+    <!--      <champion-rank-bank-pick-lol-->
+    <!--        v-for="champion in champions"-->
+    <!--        :key="champion.key"-->
+    <!--        :champion="champion"-->
+    <!--        @click:champion="onClickChampion"-->
+    <!--      />-->
+    <!--    </t-grid>-->
+    <div
+      class="flex-grow flex-shrink-0 h-16 overflow-y-auto flex items-start flex-wrap gap-1"
     >
       <champion-rank-bank-pick-lol
         v-for="champion in champions"
         :key="champion.key"
+        class="w-1/12"
         :champion="champion"
         @click:champion="onClickChampion"
       />
-    </t-grid>
+    </div>
   </div>
 </template>
 
@@ -39,7 +50,7 @@ import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
 
 export default defineComponent({
   name: 'ChampionsRankBankPickLol',
-  components: { TTextInput, ChampionRankBankPickLol, TGrid },
+  components: { TTextInput, ChampionRankBankPickLol },
   setup () {
     const store = useStore()
 
