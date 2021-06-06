@@ -3,6 +3,7 @@ import { LolRanKBanMutations, LolRanKBanMutationTypes } from './mutations'
 import { LolRankBanState } from './state'
 import { RootState } from '@/store'
 import { LolChampionWithKey } from '@/interfaces/model/lol'
+import { VuedraggableChangeEvent } from '@/interfaces/lib/vuedraggable'
 
 export enum LolRanKBanActionTypes {
   RESET_STATE = 'LOL_RANK_BAN_RESET_STATE',
@@ -10,6 +11,8 @@ export enum LolRanKBanActionTypes {
   SET_RED_TEAM_BANS = 'LOL_RANK_BAN_SET_RED_TEAM_BANS',
   HANDLE_CHAMPION_CLICK = 'LOL_RANK_BAN_HANDLE_CHAMPION_CLICK',
   HANDLE_PREV_BUTTON = 'LOL_RANK_BAN_HANDLE_PREV_BUTTON',
+  SWAP_BLUE_TEAM_PICKS = 'LOL_RANK_BAN_SWAP_BLUE_TEAM_PICKS',
+  SWAP_RED_TEAM_PICKS = 'LOL_RANK_BAN_SWAP_RED_TEAM_PICKS',
 }
 
 export type AugmentedActionContext = {
@@ -37,6 +40,14 @@ export interface LolRanKBanActions {
   ): void
   [LolRanKBanActionTypes.HANDLE_PREV_BUTTON] (
     { commit, state }: AugmentedActionContext,
+  ): void
+  [LolRanKBanActionTypes.SWAP_BLUE_TEAM_PICKS] (
+    { commit, state }: AugmentedActionContext,
+    payload: VuedraggableChangeEvent<LolChampionWithKey>
+  ): void
+  [LolRanKBanActionTypes.SWAP_RED_TEAM_PICKS] (
+    { commit, state }: AugmentedActionContext,
+    payload: VuedraggableChangeEvent<LolChampionWithKey>
   ): void
 }
 
@@ -227,5 +238,11 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK10')
         break
     }
+  },
+  [LolRanKBanActionTypes.SWAP_BLUE_TEAM_PICKS] ({ commit }, payload) {
+    commit(LolRanKBanMutationTypes.SWAP_BLUE_TEAM_PICKS, { oldIndex: payload.moved.oldIndex, newIndex: payload.moved.newIndex })
+  },
+  [LolRanKBanActionTypes.SWAP_RED_TEAM_PICKS] ({ commit }, payload) {
+    commit(LolRanKBanMutationTypes.SWAP_RED_TEAM_PICKS, { oldIndex: payload.moved.oldIndex, newIndex: payload.moved.newIndex })
   },
 }
