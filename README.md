@@ -1,24 +1,5 @@
-# crocom-converter
+# Overview
 
-## Project setup
-```
-npm install
-```
+This is created with Vue 3 + typescript + tailwindCss
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You can see webstite to visit at https://banpick.netlify.app/ 
