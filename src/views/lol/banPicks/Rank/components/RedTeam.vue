@@ -15,36 +15,25 @@
     <div
       class="flex-auto flex flex-col gap-y-3"
     >
-      <user-picker
-        :select-turn="currentTurn === 'PICK6'"
-        :champion="picks[0]"
-        color="red"
-        class="h-1/10"
-      />
-      <user-picker
-        :select-turn="currentTurn === 'PICK7'"
-        :champion="picks[1]"
-        color="red"
-        class="h-1/10"
-      />
-      <user-picker
-        :select-turn="currentTurn === 'PICK8'"
-        :champion="picks[2]"
-        color="red"
-        class="h-1/10"
-      />
-      <user-picker
-        :select-turn="currentTurn === 'PICK9'"
-        :champion="picks[3]"
-        color="red"
-        class="h-1/10"
-      />
-      <user-picker
-        :select-turn="currentTurn === 'PICK10'"
-        :champion="picks[4]"
-        color="red"
-        class="h-1/10"
-      />
+      <vuedraggable
+        v-model="picks"
+        class="h-full flex flex-col gap-y-3"
+        tag="div"
+        item-key="key"
+        :options="{disabled: currentTurn !== 'DONE'}"
+        @change="onChangeVuedraggable"
+      >
+        <template
+          #item="{element, index}"
+        >
+          <user-picker
+            :select-turn="currentTurn === `PICK${index + 6}`"
+            :champion="element"
+            color="red"
+            class="h-1/10"
+          />
+        </template>
+      </vuedraggable>
     </div>
   </div>
 </template>
@@ -53,11 +42,15 @@
 import { computed, defineComponent } from 'vue'
 import UserPicker from '@/components/lol/UserPicker/index.vue'
 import LolTeamBans from '@/components/lol/TeamBans/index.vue'
+import vuedraggable from 'vuedraggable'
 import useStore from '@/store'
+import { VuedraggableChangeEvent } from '@/interfaces/lib/vuedraggable'
+import { LolChampionWithKey } from '@/interfaces/model/lol'
+import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
 
 export default defineComponent({
   name: 'RedTeamRankBankPickLol',
-  components: { LolTeamBans, UserPicker },
+  components: { LolTeamBans, UserPicker, vuedraggable },
   setup () {
     const store = useStore()
 
@@ -65,10 +58,17 @@ export default defineComponent({
     const picks = computed(() => store.state.lolRankBan.redTeamPicks)
     const currentTurn = computed(() => store.state.lolRankBan.currentPickOrder)
 
+    const onChangeVuedraggable = async (event: VuedraggableChangeEvent<LolChampionWithKey>) => {
+      if (currentTurn.value === 'DONE' && event.moved) {
+        await store.dispatch(LolRanKBanActionTypes.SWAP_RED_TEAM_PICKS, event)
+      }
+    }
+
     return {
       bans,
       picks,
       currentTurn,
+      onChangeVuedraggable,
     }
   }
 })
