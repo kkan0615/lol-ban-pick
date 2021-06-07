@@ -115,7 +115,7 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         break
       case 'PICK1':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 0, champion: payload })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK2')
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK6')
         break
       case 'PICK2':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 1, champion: payload })
@@ -123,7 +123,7 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         break
       case 'PICK3':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 2, champion: payload })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK4')
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK8')
         break
       case 'PICK4':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 3, champion: payload })
@@ -131,7 +131,7 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         break
       case 'PICK5':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 4, champion: payload })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK6')
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK10')
         break
       case 'PICK6':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 0, champion: payload })
@@ -139,7 +139,7 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         break
       case 'PICK7':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 1, champion: payload })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK8')
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK2')
         break
       case 'PICK8':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 2, champion: payload })
@@ -147,7 +147,7 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         break
       case 'PICK9':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 3, champion: payload })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK10')
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK4')
         break
       case 'PICK10':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 4, champion: payload })
@@ -198,40 +198,40 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
         commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'BAN10')
         break
       case 'PICK2':
-        commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 0, champion: {} as LolChampionWithKey })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK1')
+        commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 1, champion: {} as LolChampionWithKey })
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK7')
         break
       case 'PICK3':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 1, champion: {} as LolChampionWithKey })
         commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK2')
         break
       case 'PICK4':
-        commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 2, champion: {} as LolChampionWithKey })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK3')
+        commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 3, champion: {} as LolChampionWithKey })
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK9')
         break
       case 'PICK5':
         commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 3, champion: {} as LolChampionWithKey })
         commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK4')
         break
       case 'PICK6':
-        commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 4, champion: {} as LolChampionWithKey })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK5')
+        commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 0, champion: {} as LolChampionWithKey })
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK1')
         break
       case 'PICK7':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 0, champion: {} as LolChampionWithKey })
         commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK6')
         break
       case 'PICK8':
-        commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 1, champion: {} as LolChampionWithKey })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK7')
+        commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 2, champion: {} as LolChampionWithKey })
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK3')
         break
       case 'PICK9':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 2, champion: {} as LolChampionWithKey })
         commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK8')
         break
       case 'PICK10':
-        commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 3, champion: {} as LolChampionWithKey })
-        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK9')
+        commit(LolRanKBanMutationTypes.REPLACE_BLUE_TEAM_PICKS_BY_INDEX, { index: 4, champion: {} as LolChampionWithKey })
+        commit(LolRanKBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK5')
         break
       case 'DONE':
         commit(LolRanKBanMutationTypes.REPLACE_RED_TEAM_PICKS_BY_INDEX, { index: 4, champion: {} as LolChampionWithKey })
