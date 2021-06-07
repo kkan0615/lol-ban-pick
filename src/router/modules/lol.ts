@@ -16,6 +16,15 @@ export const routes: RouteRecordRaw = {
         requiredLogin: true,
       },
     },
+    {
+      path: 'banPick/competition',
+      name: 'CompetitionBankPickLol',
+      component: () => import('@/views/lol/banPicks/Competition/index.vue'),
+      meta: {
+        hidden: true,
+        requiredLogin: true,
+      },
+    },
   ]
 }
 
