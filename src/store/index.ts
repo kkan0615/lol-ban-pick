@@ -12,19 +12,23 @@ import { CommonCodeState } from '@/store/modules/commonCode/state'
 import { commonCodeModule, Store as CommonCodeStore } from '@/store/modules/commonCode'
 import { LolRankBanState } from '@/store/modules/lolRankBan/state'
 import { lolRankBanModule, Store as LolRankBanStore } from '@/store/modules/lolRankBan'
+import { LolCompetitionBanState } from '@/store/modules/lolCompetitionBan/state'
+import { LolCompetitionBanModule, Store as LolCompetitionBanStore } from '@/store/modules/lolCompetitionBan'
 
 export interface RootState {
   user: UserState
   application: ApplicationState
   commonCode: CommonCodeState
   lolRankBan: LolRankBanState
+  lolCompetitionBan: LolCompetitionBanState
 }
 
 export type RootStore =
   UserStore<Pick<RootState, 'user'>> &
   ApplicationStore<Pick<RootState, 'application'>> &
   CommonCodeStore<Pick<RootState, 'commonCode'>> &
-  LolRankBanStore<Pick<RootState, 'lolRankBan'>>
+  LolRankBanStore<Pick<RootState, 'lolRankBan'>> &
+  LolCompetitionBanStore<Pick<RootState, 'lolCompetitionBan'>>
 
 // define injection key
 export const key: InjectionKey<Store<RootState>> = Symbol()
@@ -39,6 +43,7 @@ export const store = createStore<RootState>({
     application: applicationModule,
     commonCode: commonCodeModule,
     lolRankBan: lolRankBanModule,
+    lolCompetitionBan: LolCompetitionBanModule,
   },
 })
 export default function useStore (): RootStore {

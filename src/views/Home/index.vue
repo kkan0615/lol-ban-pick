@@ -3,7 +3,7 @@
     class="h-full"
   >
     <div
-      class="h-full flex justify-center items-center"
+      class="h-full flex justify-center items-center gap-4"
     >
       <div
         class="h-1/5 flex justify-center items-center ring p-4 bg-white cursor-pointer hover:shadow-lg"
@@ -13,6 +13,16 @@
           class="text-center"
         >
           League Of Legend Rank ban
+        </div>
+      </div>
+      <div
+        class="h-1/5 flex justify-center items-center ring p-4 bg-white cursor-pointer hover:shadow-lg"
+        @click="onClickLolCompetitionBanCard"
+      >
+        <div
+          class="text-center"
+        >
+          League Of Legend Competition ban
         </div>
       </div>
     </div>
@@ -28,12 +38,17 @@ export default defineComponent({
   setup () {
     const router = useRouter()
 
-    const onClickLolRankBanCard = () => {
-      router.push({ name: 'RankBankPickLol' })
+    const onClickLolRankBanCard = async () => {
+      await router.push({ name: 'RankBankPickLol' })
+    }
+
+    const onClickLolCompetitionBanCard = async () => {
+      await router.push({ name: 'CompetitionBankPickLol' })
     }
 
     return {
       onClickLolRankBanCard,
+      onClickLolCompetitionBanCard,
     }
   }
 })

@@ -37,18 +37,19 @@ export default defineComponent({
     const store = useStore()
     const { emit } = useContext()
 
-    const championProp = props.champion as LolChampion
+    const championProp = computed(() => props.champion as LolChampion)
 
-    const imageSrc = computed(() => `http://ddragon.leagueoflegends.com/cdn/${championProp.version}/img/champion/${championProp.image.full}`)
-    const disabled = computed(() => store.state.lolRankBan.blueTeamBans.findIndex(ban => ban.key === championProp.key) >= 0
-        || store.state.lolRankBan.redTeamBans.findIndex(ban => ban.key === championProp.key) >= 0
-        || store.state.lolRankBan.blueTeamPicks.findIndex(ban => ban.key === championProp.key) >= 0
-        || store.state.lolRankBan.redTeamPicks.findIndex(ban => ban.key === championProp.key) >= 0
+    const imageSrc = computed(() => `http://ddragon.leagueoflegends.com/cdn/${championProp.value.version}/img/champion/${championProp.value.image.full}`)
+    const disabled = computed(() =>
+      store.state.lolCompetitionBan.blueTeamBans.findIndex(ban => ban.key === championProp.value.key) >= 0
+      || store.state.lolCompetitionBan.redTeamBans.findIndex(ban => ban.key === championProp.value.key) >= 0
+      || store.state.lolCompetitionBan.blueTeamPicks.findIndex(ban => ban.key === championProp.value.key) >= 0
+      || store.state.lolCompetitionBan.redTeamPicks.findIndex(ban => ban.key === championProp.value.key) >= 0
     )
 
     const onClickChampion = () => {
       if (!disabled.value)
-        emit('click:champion', championProp)
+        emit('click:champion', championProp.value)
     }
 
     return {
