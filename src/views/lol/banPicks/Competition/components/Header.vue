@@ -32,6 +32,7 @@ import useStore from '@/store'
 import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
 import VersionPicker from '@/components/pickers/Version/index.vue'
 import LolLanguagePicker from '@/components/pickers/Language/index.vue'
+import { LolCompetitionBanActionTypes } from '@/store/modules/lolCompetitionBan/actions'
 
 export default defineComponent({
   name: 'HeaderCompetitionBankPickLol',
@@ -39,15 +40,15 @@ export default defineComponent({
   setup () {
     const store = useStore()
 
-    const currentTurn = computed(() => store.state.lolRankBan.currentPickOrder)
+    const currentTurn = computed(() => store.state.lolCompetitionBan.currentPickOrder)
 
     const onClickResetButton = async () => {
       if (confirm('Would like to reset data?'))
-        await store.dispatch(LolRanKBanActionTypes.RESET_STATE)
+        await store.dispatch(LolCompetitionBanActionTypes.RESET_STATE)
     }
 
     const onClickPrevButton = async () => {
-      await store.dispatch(LolRanKBanActionTypes.HANDLE_PREV_BUTTON)
+      await store.dispatch(LolCompetitionBanActionTypes.HANDLE_PREV_BUTTON)
     }
 
     return {

@@ -47,6 +47,7 @@ import useStore from '@/store'
 import { LolChampionWithKey } from '@/interfaces/model/lol'
 import { VuedraggableChangeEvent } from '@/interfaces/lib/vuedraggable'
 import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
+import { LolCompetitionBanActionTypes } from '@/store/modules/lolCompetitionBan/actions'
 
 export default defineComponent({
   name: 'BlueTeamCompetitionBankPickLol',
@@ -54,13 +55,13 @@ export default defineComponent({
   setup () {
     const store = useStore()
 
-    const bans = computed(() => store.state.lolRankBan.blueTeamBans)
-    const picks = computed(() => store.state.lolRankBan.blueTeamPicks)
-    const currentTurn = computed(() => store.state.lolRankBan.currentPickOrder)
+    const bans = computed(() => store.state.lolCompetitionBan.blueTeamBans)
+    const picks = computed(() => store.state.lolCompetitionBan.blueTeamPicks)
+    const currentTurn = computed(() => store.state.lolCompetitionBan.currentPickOrder)
 
     const onChangeVuedraggable = async (event: VuedraggableChangeEvent<LolChampionWithKey>) => {
       if (currentTurn.value === 'DONE' && event.moved) {
-        await store.dispatch(LolRanKBanActionTypes.SWAP_BLUE_TEAM_PICKS, event)
+        await store.dispatch(LolCompetitionBanActionTypes.SWAP_BLUE_TEAM_PICKS, event)
       }
     }
 
