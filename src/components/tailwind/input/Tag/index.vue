@@ -194,7 +194,6 @@ export default defineComponent({
     }
 
     const onKeyDownEnterSearchInput = () => {
-      console.log(innerSearch.value)
       const items = props.items as Array<any>
       if (!innerSearch.value || !items)
         return

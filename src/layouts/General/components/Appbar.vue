@@ -5,6 +5,7 @@
   >
     <t-button
       text
+      @click="onClickMenuButton"
     >
       <t-material-icon>
         menu
@@ -18,12 +19,22 @@ import { defineComponent } from 'vue'
 import TAppbar from '@/components/tailwind/layouts/Appbar/index.vue'
 import TButton from '@/components/tailwind/Button/index.vue'
 import TMaterialIcon from '@/components/tailwind/icon/Material/index.vue'
+import useStore from '@/store'
+import { ApplicationActionTypes } from '@/store/modules/application/actions'
 
 export default defineComponent({
   name: 'AppbarGeneralLayout',
   components: { TMaterialIcon, TButton, TAppbar },
   setup () {
-    return
+    const store = useStore()
+
+    const onClickMenuButton = async () => {
+      await store.dispatch(ApplicationActionTypes.CHANGE_NAVIGATOR)
+    }
+
+    return {
+      onClickMenuButton,
+    }
   }
 })
 </script>

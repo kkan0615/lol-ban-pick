@@ -1,65 +1,100 @@
 <template>
-  <t-small-navigator-layout>
+  <div
+    v-if="navigatorStatus"
+    class="flex absolute h-screen w-screen left-0 top-0 z-10"
+  >
     <div
-      v-for="route in generalRoutes"
-      :key="route.name"
-      class="w-full"
+      class="w-64 bg-white shadow-lg"
+      @focusout="onFocusOut"
     >
-      <navigator-menu-general-layout
-        v-if="!route.meta.hidden"
-        :value="route"
-        @click="onClickMenu(route)"
+      <div
+        class="m-2 p-2 cursor-pointer rounded-md"
+        :class="{
+          'bg-gray-300': route.name === 'RankBankPickLol'
+        }"
+        @click="onClickLolRankBanPick"
       >
-        {{ route.meta.icon }}
-      </navigator-menu-general-layout>
+        <div
+          class="flex items-center"
+        >
+          <img
+            class="w-8 h-8"
+            src="@/assets/lol-icon.png"
+            alt="lol"
+          >
+          <div
+            class="ml-2"
+          >
+            Rank Ban
+          </div>
+        </div>
+      </div>
+      <div
+        class="m-2 p-2 cursor-pointer rounded-md"
+        :class="{
+          'bg-gray-300': route.name === 'CompetitionBankPickLol'
+        }"
+        @click="onClickLolCompetitionBanPick"
+      >
+        <div
+          class="flex items-center"
+        >
+          <img
+            class="w-8 h-8"
+            src="@/assets/lol-icon.png"
+            alt="lol"
+          >
+          <div
+            class="ml-2"
+          >
+            Competition Ban
+          </div>
+        </div>
+      </div>
     </div>
-    <navigator-menu-general-layout
-      class="mt-auto"
-      @click="onClickAdminMenu"
-    >
-      admin_panel_settings
-    </navigator-menu-general-layout>
-  </t-small-navigator-layout>
+    <div
+      class="flex-auto w-full"
+      @click="onFocusOut"
+    />
+  </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import TSmallNavigatorLayout from '@/components/tailwind/layouts/navigators/Small/index.vue'
-import NavigatorMenuGeneralLayout from '@/layouts/General/components/NavigatorMenu.vue'
+import { computed, defineComponent, onMounted } from 'vue'
 import useStore from '@/store'
-import { RouteRecordRaw, useRoute, useRouter } from 'vue-router'
-import { getParentRoute } from '@/utils/router'
+import { useRoute, useRouter } from 'vue-router'
+import { ApplicationActionTypes } from '@/store/modules/application/actions'
 
 export default defineComponent({
   name: 'NavigatorGeneralLayout',
-  components: { NavigatorMenuGeneralLayout, TSmallNavigatorLayout },
   setup () {
     const store = useStore()
-    const route =  useRoute()
+    const route = useRoute()
     const router = useRouter()
 
-    const generalRoutes = computed(() => store ? store.state.menu.generalRoutes : [])
-    const activingName = computed(() => {
-      if (!route.name)
-        return ''
+    const navigatorStatus = computed(() => store.state.application.navigator)
 
-      const result = getParentRoute(route.name as string)
-      return result ? result.name : ''
-    })
-
-    const onClickMenu = async (clickedRoute: RouteRecordRaw) => {
-      await router.push({ name: clickedRoute.name })
+    /**
+     * Click outside of navigator div
+     */
+    const onFocusOut = async () => {
+      await store.dispatch(ApplicationActionTypes.CHANGE_NAVIGATOR)
     }
 
-    const onClickAdminMenu = async () => {
-      await router.push({ name: 'AdminLayout' })
+    const onClickLolRankBanPick = async () => {
+      await router.push({ name: 'RankBankPickLol' })
+    }
+
+    const onClickLolCompetitionBanPick = async () => {
+      await router.push({ name: 'CompetitionBankPickLol' })
     }
 
     return {
-      generalRoutes,
-      activingName,
-      onClickMenu,
-      onClickAdminMenu,
+      route,
+      navigatorStatus,
+      onFocusOut,
+      onClickLolRankBanPick,
+      onClickLolCompetitionBanPick,
     }
   }
 })

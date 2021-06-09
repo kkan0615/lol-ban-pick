@@ -37,7 +37,6 @@ export default defineComponent({
 
     onMounted(() => {
       store.subscribeAction((action => {
-        console.log(action)
         if (action.type === ApplicationActionTypes.SHOW_SNACKBAR) {
           setSnackbarTimer()
         }
