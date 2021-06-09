@@ -37,10 +37,6 @@ export default defineComponent({
   setup (props) {
     const bansProp = props.bans as Array<LolChampionWithKey>
 
-    onMounted(() => {
-      console.log(bansProp)
-    })
-
     return {
       bansProp,
     }

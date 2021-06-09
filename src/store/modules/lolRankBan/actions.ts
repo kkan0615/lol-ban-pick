@@ -66,7 +66,6 @@ export const lolRanKBanActions: ActionTree<LolRankBanState, RootState> & LolRanK
     commit(LolRanKBanMutationTypes.SET_RED_TEAM_BANS, payload)
   },
   [LolRanKBanActionTypes.HANDLE_CHAMPION_CLICK] ({ commit, state }, payload) {
-    console.log(payload)
     if (state.blueTeamBans.length < 5)
       commit(LolRanKBanMutationTypes.SET_BLUE_TEAM_BANS, new Array(5).fill({}))
     if (state.redTeamBans.length < 5)

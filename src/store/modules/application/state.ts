@@ -18,7 +18,7 @@ export const applicationState: ApplicationState = {
   lolVersion: localStorage.getItem(LocalStorageKeyEnum.LOL_VERSION) || DEFAULT_LOL_VERSION,
   lolLanguage: (localStorage.getItem(LocalStorageKeyEnum.LOL_LANGUAGE) as LolLanguagesEnum) || LolLanguagesEnum.ko_KR,
   subNavigator: true,
-  navigator: true,
+  navigator: false,
   userNavigator: true,
   snackbar: {} as SnackbarOption
 }

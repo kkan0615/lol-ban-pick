@@ -52,7 +52,6 @@ export default defineComponent({
       .sort((a, b) => a.name.localeCompare(b.name)).filter(champion => champion.name.includes(searchInput.value)))
 
     const onClickChampion = async (champion: LolChampion) => {
-      console.log(champion)
       await store.dispatch(LolCompetitionBanActionTypes.HANDLE_CHAMPION_CLICK, champion)
       searchInput.value = ''
     }

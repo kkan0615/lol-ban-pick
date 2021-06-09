@@ -242,8 +242,6 @@ export const lolCompetitionBanActions: ActionTree<LolCompetitionBanState, RootSt
         commit(LolCompetitionBanBanMutationTypes.SET_CURRENT_PICK_ORDER, 'PICK10')
         break
     }
-    console.log(state.currentPickOrder)
-
   },
   [LolCompetitionBanActionTypes.SWAP_BLUE_TEAM_PICKS] ({ commit }, payload) {
     commit(LolCompetitionBanBanMutationTypes.SWAP_BLUE_TEAM_PICKS, { oldIndex: payload.moved.oldIndex, newIndex: payload.moved.newIndex })

@@ -8,6 +8,7 @@
       <appbar-general-layout
         class="flex-shrink flex-grow-0"
       />
+      <navigator-general-layout />
       <div
         class="flex-grow flex-shrink-0"
       >
@@ -31,10 +32,11 @@ import { defineComponent, onMounted } from 'vue'
 import useStore from '@/store'
 import MyInfoGeneralLayout from '@/layouts/General/components/MyInfo.vue'
 import AppbarGeneralLayout from '@/layouts/General/components/Appbar.vue'
+import NavigatorGeneralLayout from '@/layouts/General/components/Navigator.vue'
 
 export default defineComponent({
   name: 'GeneralLayout',
-  components: { AppbarGeneralLayout, MyInfoGeneralLayout },
+  components: { NavigatorGeneralLayout, AppbarGeneralLayout, MyInfoGeneralLayout },
   setup () {
     const store = useStore()
 
