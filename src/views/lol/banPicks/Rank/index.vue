@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import UserChampion from '@/components/lol/UserPicker/index.vue'
 import RedTeamRankBankPickLol from '@/views/lol/banPicks/Rank/components/RedTeam.vue'
 import BlueTeamRankBankPickLol from '@/views/lol/banPicks/Rank/components/BlueTeam.vue'
 import ChampionsRankBankPickLol from '@/views/lol/banPicks/Rank/components/Champions.vue'

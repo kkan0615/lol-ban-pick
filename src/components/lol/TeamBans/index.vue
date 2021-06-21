@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 import { LolChampionWithKey } from '@/interfaces/model/lol'
 import LolTeamBansBan from '@/components/lol/TeamBans/components/Ban.vue'
 
