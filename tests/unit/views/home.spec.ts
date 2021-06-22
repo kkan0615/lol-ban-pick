@@ -2,6 +2,8 @@
 
 import { flushPromises, mount } from '@vue/test-utils'
 import Home from '@/views/Home/index.vue'
+import { VueWrapper } from '@vue/test-utils/dist/vueWrapper'
+import { ComponentPublicInstance } from 'vue'
 
 const mockRouterPush = jest.fn()
 
@@ -12,7 +14,7 @@ jest.mock('vue-router', () => ({
 }))
 
 describe('home/index.vue', () => {
-  let wrapper: ReturnType<typeof mount> | null = null
+  let wrapper: null | VueWrapper<ComponentPublicInstance<any>> = null
 
   beforeEach(async () => {
     jest.resetAllMocks()

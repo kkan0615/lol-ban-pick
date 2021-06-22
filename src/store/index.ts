@@ -46,6 +46,7 @@ export const store = createStore<RootState>({
     lolCompetitionBan: LolCompetitionBanModule,
   },
 })
+
 export default function useStore (): RootStore {
   return baseUseStore(key) as RootStore
 }
