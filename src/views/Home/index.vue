@@ -6,6 +6,7 @@
       class="h-full flex justify-center items-center gap-4"
     >
       <div
+        id="lol-rank-ban-card"
         class="h-1/5 flex justify-center items-center ring p-4 bg-white cursor-pointer hover:shadow-lg"
         @click="onClickLolRankBanCard"
       >
@@ -16,6 +17,7 @@
         </div>
       </div>
       <div
+        id="lol-competition-ban-card"
         class="h-1/5 flex justify-center items-center ring p-4 bg-white cursor-pointer hover:shadow-lg"
         @click="onClickLolCompetitionBanCard"
       >
