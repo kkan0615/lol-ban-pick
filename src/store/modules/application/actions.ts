@@ -2,8 +2,8 @@ import { ActionContext, ActionTree } from 'vuex'
 import { ApplicationMutations, ApplicationMutationTypes } from './mutations'
 import { ApplicationState } from './state'
 import { RootState } from '@/store'
-import { SnackbarOption } from '@/interfaces/system/snackbar'
-import { LolLanguagesEnum } from '@/interfaces/model/lol'
+import { SnackbarOption } from '@/types/system/snackbar'
+import { LolLanguagesEnum } from '@/types/model/lol'
 
 export enum ApplicationActionTypes {
   SET_LOL_VERSION = 'APPLICATION_SET_LOL_VERSION',

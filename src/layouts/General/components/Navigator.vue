@@ -64,6 +64,7 @@ import { computed, defineComponent, onMounted } from 'vue'
 import useStore from '@/store'
 import { useRoute, useRouter } from 'vue-router'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
+import { RouterNameKeyEnum } from '@/types/router/name'
 
 export default defineComponent({
   name: 'NavigatorGeneralLayout',
@@ -82,11 +83,11 @@ export default defineComponent({
     }
 
     const onClickLolRankBanPick = async () => {
-      await router.push({ name: 'RankBankPickLol' })
+      await router.push({ name: RouterNameKeyEnum.RANK_BAN_PICK_LOL })
     }
 
     const onClickLolCompetitionBanPick = async () => {
-      await router.push({ name: 'CompetitionBankPickLol' })
+      await router.push({ name: RouterNameKeyEnum.COMPETITION_RANK_PICK_LOL })
     }
 
     return {

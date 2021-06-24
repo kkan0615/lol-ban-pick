@@ -1,10 +1,10 @@
 /** Get versions of lol */
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampion } from '@/types/model/lol/Champion'
 
 export const LOL_VERSIONS_URL = 'https://ddragon.leagueoflegends.com/api/versions.json'
 export const LOL_LANGUAGES_URL = 'https://ddragon.leagueoflegends.com/cdn/languages.json'
 export const LOL_LOADING_SCREEN_CHAMPION_URL = 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/'
-export const DEFAULT_LOL_VERSION = '11.11.1'
+export const DEFAULT_LOL_VERSION = '11.13.1'
 
 /**
  * en_US -

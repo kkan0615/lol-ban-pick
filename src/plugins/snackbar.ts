@@ -1,4 +1,4 @@
-import { SnackbarOption } from '@/interfaces/system/snackbar'
+import { SnackbarOption } from '@/types/system/snackbar'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
 

@@ -40,7 +40,7 @@
 import { defineComponent, nextTick, ref, useContext } from 'vue'
 import TMaterialIcon from '@/components/tailwind/icon/Material/index.vue'
 import TButton from '@/components/tailwind/Button/index.vue'
-import { CustomFile } from '@/interfaces/system/file'
+import { CustomFile } from '@/types/system/file'
 
 export default defineComponent({
   name: 'TFileDragAndDrop',

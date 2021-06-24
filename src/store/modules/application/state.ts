@@ -1,6 +1,6 @@
-import { SnackbarOption } from '@/interfaces/system/snackbar'
-import { DEFAULT_LOL_VERSION, LolLanguagesEnum } from '@/interfaces/model/lol'
-import { LocalStorageKeyEnum } from '@/interfaces/system/localStorage'
+import { SnackbarOption } from '@/types/system/snackbar'
+import { DEFAULT_LOL_VERSION, LolLanguagesEnum } from '@/types/model/lol'
+import { LocalStorageKeyEnum } from '@/types/system/localStorage'
 
 export interface ApplicationState {
   lolVersion: string

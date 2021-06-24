@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampion } from '@/types/model/lol/Champion'
 
 export default defineComponent({
   name: 'LolTeamBansBan',

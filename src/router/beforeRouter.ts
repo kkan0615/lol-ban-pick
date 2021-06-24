@@ -1,7 +1,7 @@
 import { router } from '@/router'
 import { store } from '@/store'
 import defaultAxios from '@/utils/lib/axioses/default'
-import { LOL_VERSIONS_URL } from '@/interfaces/model/lol'
+import { LOL_VERSIONS_URL } from '@/types/model/lol'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
 import { CommonCodeActionTypes } from '@/store/modules/commonCode/actions'
 

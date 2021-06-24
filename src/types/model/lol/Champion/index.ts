@@ -1,6 +1,6 @@
-import { LolChampionInfo } from '@/interfaces/model/lol/Champion/info'
-import { LolChampionImage } from '@/interfaces/model/lol/Champion/image'
-import { LolChampionStats } from '@/interfaces/model/lol/Champion/stats'
+import { LolChampionInfo } from '@/types/model/lol/Champion/info'
+import { LolChampionImage } from '@/types/model/lol/Champion/image'
+import { LolChampionStats } from '@/types/model/lol/Champion/stats'
 
 export interface LolChampion {
   version: string

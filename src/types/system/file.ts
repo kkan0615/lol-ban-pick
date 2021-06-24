@@ -1,4 +1,4 @@
-import { SequelizeAttributes } from '@/interfaces/model/sequelize/index.ts'
+import { SequelizeAttributes } from '@/types/model/sequelize/index.ts'
 
 export type CustomFileType = 'image' | 'video' | 'file'
 

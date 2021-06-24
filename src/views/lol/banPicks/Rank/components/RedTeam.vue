@@ -44,8 +44,8 @@ import UserPicker from '@/components/lol/UserPicker/index.vue'
 import LolTeamBans from '@/components/lol/TeamBans/index.vue'
 import vuedraggable from 'vuedraggable'
 import useStore from '@/store'
-import { VuedraggableChangeEvent } from '@/interfaces/lib/vuedraggable'
-import { LolChampionWithKey } from '@/interfaces/model/lol'
+import { VuedraggableChangeEvent } from '@/types/lib/vuedraggable'
+import { LolChampionWithKey } from '@/types/model/lol'
 import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
 
 export default defineComponent({

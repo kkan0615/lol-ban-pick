@@ -34,9 +34,9 @@ import useStore from '@/store'
 import TGrid from '@/components/tailwind/grid/Default/index.vue'
 import ChampionRankBankPickLol from '@/views/lol/banPicks/Rank/components/Chamipon.vue'
 import TTextInput from '@/components/tailwind/input/Text/index.vue'
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampion } from '@/types/model/lol/Champion'
 import { LolRanKBanActionTypes } from '@/store/modules/lolRankBan/actions'
-import { LolChampionWithKey } from '@/interfaces/model/lol'
+import { LolChampionWithKey } from '@/types/model/lol'
 
 export default defineComponent({
   name: 'ChampionsRankBankPickLol',

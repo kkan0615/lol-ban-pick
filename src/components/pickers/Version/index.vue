@@ -19,7 +19,7 @@
 import { computed, defineComponent, ref } from 'vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
-import { DEFAULT_LOL_VERSION } from '@/interfaces/model/lol'
+import { DEFAULT_LOL_VERSION } from '@/types/model/lol'
 
 export default defineComponent({
   name: 'VersionPicker',

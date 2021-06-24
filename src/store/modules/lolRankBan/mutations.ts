@@ -1,7 +1,7 @@
 import { MutationTree } from 'vuex'
 import { LolRankBanState } from './state'
-import { LolChampionWithKey } from '@/interfaces/model/lol'
-import { LolRankBanOrderType } from '@/interfaces/model/lol/Ban'
+import { LolChampionWithKey } from '@/types/model/lol'
+import { LolRankBanOrderType } from '@/types/model/lol/Ban'
 
 export enum LolRanKBanMutationTypes {
   SET_BLUE_TEAM_BANS = 'LOL_RANK_BAN_SET_BLUE_TEAM_BANS',

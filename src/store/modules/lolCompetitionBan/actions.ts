@@ -2,9 +2,9 @@ import { ActionContext, ActionTree } from 'vuex'
 import { LolCompetitionBanMutations, LolCompetitionBanBanMutationTypes } from './mutations'
 import { LolCompetitionBanState } from './state'
 import { RootState } from '@/store'
-import { LolChampionWithKey } from '@/interfaces/model/lol'
-import { VuedraggableChangeEvent } from '@/interfaces/lib/vuedraggable'
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampionWithKey } from '@/types/model/lol'
+import { VuedraggableChangeEvent } from '@/types/lib/vuedraggable'
+import { LolChampion } from '@/types/model/lol/Champion'
 
 export enum LolCompetitionBanActionTypes {
   RESET_STATE = 'LOL_COMPETITION_BAN_RESET_STATE',

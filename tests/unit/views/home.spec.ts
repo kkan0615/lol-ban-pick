@@ -4,6 +4,7 @@ import { flushPromises, mount } from '@vue/test-utils'
 import Home from '@/views/Home/index.vue'
 import { VueWrapper } from '@vue/test-utils/dist/vueWrapper'
 import { ComponentPublicInstance } from 'vue'
+import { RouterNameKeyEnum } from '@/types/router/name'
 
 const mockRouterPush = jest.fn()
 
@@ -39,7 +40,7 @@ describe('home/index.vue', () => {
       expect(found).not.toBeNull()
       await found.trigger('click')
       await flushPromises()
-      expect(mockRouterPush).toBeCalledWith({ name: 'RankBankPickLol' })
+      expect(mockRouterPush).toBeCalledWith({ name: RouterNameKeyEnum.RANK_BAN_PICK_LOL })
     }
   })
 
@@ -49,7 +50,7 @@ describe('home/index.vue', () => {
       expect(found).not.toBeNull()
       await found.trigger('click')
       await flushPromises()
-      expect(mockRouterPush).toBeCalledWith({ name: 'CompetitionBankPickLol' })
+      expect(mockRouterPush).toBeCalledWith({ name: RouterNameKeyEnum.COMPETITION_RANK_PICK_LOL })
     }
   })
 

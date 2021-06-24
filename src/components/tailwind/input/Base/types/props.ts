@@ -1,5 +1,5 @@
 import { ComponentObjectPropsOptions  } from 'vue'
-import { InputRuleType } from '@/interfaces/system/rule'
+import { InputRuleType } from '@/types/system/rule'
 
 export interface InputBoxProps {
   modelValue: any

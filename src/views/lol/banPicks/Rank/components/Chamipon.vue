@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, useContext } from 'vue'
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampion } from '@/types/model/lol/Champion'
 import useStore from '@/store'
 
 export default defineComponent({

@@ -96,7 +96,7 @@ import {
 import TMaterialIcon from '@/components/tailwind/icon/Material/index.vue'
 import { inputBoxProps } from '@/components/tailwind/input/Base/types/props'
 import TButton from '@/components/tailwind/Button/index.vue'
-import { InputRuleType } from '@/interfaces/system/rule'
+import { InputRuleType } from '@/types/system/rule'
 import { TFormProvideKey } from '@/components/tailwind/Form/types'
 
 export default defineComponent({

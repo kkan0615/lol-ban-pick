@@ -1,4 +1,4 @@
-import { CustomFile } from '@/interfaces/system/file'
+import { CustomFile } from '@/types/system/file'
 
 export const downloadFileInHTML = async (file: CustomFile, title = file.name) => {
   if (!file.href)

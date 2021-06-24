@@ -1,4 +1,4 @@
-import { LolChampionWithKey } from '@/interfaces/model/lol'
+import { LolChampionWithKey } from '@/types/model/lol'
 
 export interface CommonCodeState {
   lolChampions: LolChampionWithKey

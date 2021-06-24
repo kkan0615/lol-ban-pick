@@ -2,9 +2,9 @@ import { ActionContext, ActionTree } from 'vuex'
 import { CommonCodeMutations, CommonCodeMutationTypes } from './mutations'
 import { CommonCodeState } from './state'
 import { RootState } from '@/store'
-import { LolChampion } from '@/interfaces/model/lol/Champion'
+import { LolChampion } from '@/types/model/lol/Champion'
 import defaultAxios from '@/utils/lib/axioses/default'
-import { LolChampionReturn, LolChampionWithKey } from '@/interfaces/model/lol'
+import { LolChampionReturn, LolChampionWithKey } from '@/types/model/lol'
 
 export enum CommonCodeActionTypes {
   SET_LOL_CHAMPIONS = 'COMMON_CODE_SET_LOL_CHAMPIONS',

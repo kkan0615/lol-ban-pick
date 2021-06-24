@@ -1,9 +1,9 @@
 import { MutationTree } from 'vuex'
 import { ApplicationState } from './state'
-import { SnackbarOption } from '@/interfaces/system/snackbar'
-import { LolLanguagesEnum } from '@/interfaces/model/lol'
+import { SnackbarOption } from '@/types/system/snackbar'
+import { LolLanguagesEnum } from '@/types/model/lol'
 import { store } from '@/store'
-import { LocalStorageKeyEnum } from '@/interfaces/system/localStorage'
+import { LocalStorageKeyEnum } from '@/types/system/localStorage'
 
 export enum ApplicationMutationTypes {
   SET_LOL_VERSION = 'APPLICATION_SET_LOL_VERSION',

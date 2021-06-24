@@ -34,6 +34,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
+import { RouterNameKeyEnum } from '@/types/router/name'
 
 export default defineComponent({
   name: 'Home',
@@ -41,11 +42,11 @@ export default defineComponent({
     const router = useRouter()
 
     const onClickLolRankBanCard = async () => {
-      await router.push({ name: 'RankBankPickLol' })
+      await router.push({ name: RouterNameKeyEnum.RANK_BAN_PICK_LOL })
     }
 
     const onClickLolCompetitionBanCard = async () => {
-      await router.push({ name: 'CompetitionBankPickLol' })
+      await router.push({ name: RouterNameKeyEnum.COMPETITION_RANK_PICK_LOL })
     }
 
     return {

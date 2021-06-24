@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { LolChampionWithKey } from '@/interfaces/model/lol'
+import { LolChampionWithKey } from '@/types/model/lol'
 import LolTeamBansBan from '@/components/lol/TeamBans/components/Ban.vue'
 
 export default defineComponent({

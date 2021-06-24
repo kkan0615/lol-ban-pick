@@ -19,7 +19,7 @@
 import { computed, defineComponent, ref } from 'vue'
 import useStore from '@/store'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
-import { DEFAULT_LOL_VERSION, LolLanguagesEnum } from '@/interfaces/model/lol'
+import { DEFAULT_LOL_VERSION, LolLanguagesEnum } from '@/types/model/lol'
 
 export default defineComponent({
   name: 'LolLanguagePicker',

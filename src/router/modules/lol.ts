@@ -1,15 +1,16 @@
 import { RouteRecordRaw } from 'vue-router'
 import LolBanPickLayout from '@/layouts/LolBanpick/index.vue'
+import { RouterNameKeyEnum } from '@/types/router/name'
 
 export const routes: RouteRecordRaw = {
   path: 'lol',
-  name: 'LolBanPickLayout',
+  name: RouterNameKeyEnum.LOL_BAN_PICK_LAYOUT,
   component: LolBanPickLayout,
   redirect: { name: 'RankBankPickLol' },
   children: [
     {
       path: 'banPick/rank',
-      name: 'RankBankPickLol',
+      name: RouterNameKeyEnum.RANK_BAN_PICK_LOL,
       component: () => import('@/views/lol/banPicks/Rank/index.vue'),
       meta: {
         hidden: true,
@@ -18,7 +19,7 @@ export const routes: RouteRecordRaw = {
     },
     {
       path: 'banPick/competition',
-      name: 'CompetitionBankPickLol',
+      name: RouterNameKeyEnum.COMPETITION_RANK_PICK_LOL,
       component: () => import('@/views/lol/banPicks/Competition/index.vue'),
       meta: {
         hidden: true,
