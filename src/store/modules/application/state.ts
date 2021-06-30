@@ -1,5 +1,5 @@
 import { SnackbarOption } from '@/types/system/snackbar'
-import { DEFAULT_LOL_VERSION, LolLanguagesEnum } from '@/types/model/lol'
+import { LolLanguagesEnum } from '@/types/model/lol'
 import { LocalStorageKeyEnum } from '@/types/system/localStorage'
 
 export interface ApplicationState {
@@ -15,7 +15,7 @@ export interface ApplicationState {
  * navigator
  */
 export const applicationState: ApplicationState = {
-  lolVersion: localStorage.getItem(LocalStorageKeyEnum.LOL_VERSION) || DEFAULT_LOL_VERSION,
+  lolVersion: localStorage.getItem(LocalStorageKeyEnum.LOL_VERSION) || '',
   lolLanguage: (localStorage.getItem(LocalStorageKeyEnum.LOL_LANGUAGE) as LolLanguagesEnum) || LolLanguagesEnum.ko_KR,
   subNavigator: true,
   navigator: false,

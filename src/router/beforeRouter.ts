@@ -1,7 +1,6 @@
 import { router } from '@/router'
 import { store } from '@/store'
-import defaultAxios from '@/utils/lib/axioses/default'
-import { LOL_VERSIONS_URL } from '@/types/model/lol'
+import { DEFAULT_LOL_VERSION } from '@/types/model/lol'
 import { ApplicationActionTypes } from '@/store/modules/application/actions'
 import { CommonCodeActionTypes } from '@/store/modules/commonCode/actions'
 
@@ -12,9 +11,10 @@ router.beforeEach((async (to, from, next) => {
   }
   /* Check there is lol version */
   if (!store.state.application.lolVersion) {
-    const resVersion = (await defaultAxios.get<Array<string>>(LOL_VERSIONS_URL)).data
-    if (resVersion) {
-      await store.dispatch(ApplicationActionTypes.SET_LOL_VERSION, resVersion[0])
+    await store.dispatch(CommonCodeActionTypes.LOAD_LOL_VERSIONS)
+    /* If versions has been success to load */
+    if (store.state.commonCode.lolVersions && store.state.commonCode.lolVersions.length) {
+      await store.dispatch(ApplicationActionTypes.SET_LOL_VERSION, store.state.commonCode.lolVersions[0]  || DEFAULT_LOL_VERSION)
     }
   }
 

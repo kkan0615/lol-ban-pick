@@ -2,7 +2,6 @@ import { ActionContext, ActionTree } from 'vuex'
 import { CommonCodeMutations, CommonCodeMutationTypes } from './mutations'
 import { CommonCodeState } from './state'
 import { RootState } from '@/store'
-import { LolChampion } from '@/types/model/lol/Champion'
 import defaultAxios from '@/utils/lib/axioses/default'
 import { LolChampionReturn, LolChampionWithKey } from '@/types/model/lol'
 
