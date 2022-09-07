@@ -1,0 +1,13 @@
+node_modules
+.husky
+src/assets
+public
+dist
+dev-dist
+postcss.config.js
+**/*.json
+**/*.scss
+**/*.md
+src/env.d.ts
+yarn.lock
+*.log

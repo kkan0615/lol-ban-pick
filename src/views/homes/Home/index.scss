@@ -1,0 +1,44 @@
+.home-container {
+  &-content {
+    @apply tw-px-20 tw-pt-32 tw-pb-24 tw-text-center;
+
+    &__logo {
+      @apply tw-flex tw-justify-center tw-mb-2;
+
+      img {
+        @apply tw-w-40;
+      }
+    }
+
+    &__title {
+      @apply tw-text-6xl tw-capitalize tw-mb-2;
+    }
+
+    &-introduction-grid {
+      @apply tw-grid tw-grid-cols-3 tw-space-x-2 tw-text-left;
+    }
+  }
+
+  &-button-container {
+    @apply tw-mt-4;
+    @apply tw-flex tw-justify-center tw-space-x-2;
+  }
+
+  button {
+    @apply tw-uppercase;
+    @apply tw-px-4 tw-py-1 tw-rounded-3xl tw-drop-shadow-2xl tw-inline-flex tw-space-x-2;
+  }
+
+  .github-btn {
+    @apply tw-text-zinc-500 tw-bg-white tw-outline tw-outline-1 tw-outline-primary-500;
+    @apply dark:tw-bg-zinc-500 dark:tw-text-white dark:tw-outline-0;
+  }
+
+  .electron-link {
+    @apply tw-flex tw-items-center tw-justify-center tw-space-x-2 tw-text-zinc-500 hover:tw-text-primary-500 tw-text-sm;
+  }
+
+  .example-link {
+    @apply tw-text-zinc-500 hover:tw-text-primary-500 tw-text-sm tw-capitalize;
+  }
+}

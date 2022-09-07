@@ -1,0 +1,32 @@
+.translate-btn-dialog {
+  @apply tw-fixed;
+  @apply tw-top-1/2 tw-left-1/2;
+  @apply tw-z-50;
+  @apply tw-border tw-rounded;
+  //z-index: 999;
+  @apply tw-w-96;
+  @apply tw-shadow-2xl;
+  @apply tw-bg-background-main-light dark:tw-bg-background-main-dark;
+  transform: translate(-50%, -50%);
+
+  &-header {
+    @apply tw-flex;
+    @apply tw-bg-primary-500 tw-text-primary-text;
+    @apply tw-pt-2 tw-py-1 tw-px-4;
+    @apply tw-border-b;
+  }
+
+  &-body {
+    &-list {
+      @apply tw-divide-y;
+      &-item {
+        @apply hover:tw-bg-zinc-800 hover:tw-text-white;
+        @apply tw-cursor-pointer;
+        @apply tw-py-2 tw-px-4;
+        &--active {
+          @apply tw-border-l-4 tw-border-primary-500;
+        }
+      }
+    }
+  }
+}

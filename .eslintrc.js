@@ -1,90 +1,47 @@
+// eslint-disable-next-line no-undef
 module.exports = {
-  root: true,
-
-  env: {
-    node: true
-  },
-
-  'extends': [
-    'plugin:vue/vue3-essential',
-    'eslint:recommended',
-    '@vue/typescript/recommended',
-    'plugin:vue/vue3-recommended',
-    // 'eslint:recommended',
-    // 'plugin:vue/vue3-recommended',
-    // '@vue/typescript/recommended'
-  ],
-
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2020,
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
   },
-
+  extends: [
+    'eslint:recommended',
+    // '@vue/typescript/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:cypress/recommended', // Eslint for cypress
+    './.eslintrc-auto-import.json', // Eslint for auto-import plugin
+  ],
+  globals: {
+    'NodeJS': true,
+  },
+  env: {
+    'node': true,
+  },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'generator-star-spacing': 'off',
-    '@typescript-eslint/indent': [ 'error', 2 ],
+    // For Coding
+    'quotes': ['error', 'single'], // "" => ''
+    'semi': ['error', 'never'], // semicolon
+    'no-empty': 'error', // No empty in bracket
     'indent': [ 'error', 2, { 'SwitchCase' : 1 } ],
-    'brace-style': [ 'error', '1tbs' ],
-    'no-multiple-empty-lines': [ 'error', { 'max': 2, 'maxBOF': 1 }],
-    'no-undef': 'error',
-    'space-in-parens': ['error', 'never'],
-    'space-before-function-paren': [
-      'error',
-      'always'
-    ],
+    'comma-dangle': ['error', 'only-multiline'], // Ex) { a, b, }
+    'object-curly-spacing': ['error', 'always'], // Space between { },
+    'no-multi-spaces': 'error', // Ex) var a =  1 => var a = 1
+    'no-unused-vars': 'off',
+    'space-before-blocks': 'error', // Ex) if (a){ => if (a) {
+    'no-trailing-spaces': 'error', // No trailing spaces important!!
+    'max-len': ['error', { 'code': 120 }], // limit max length
+    // For Typescript
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'keyword-spacing': [2, { 'before': true, 'after': true }],
-    'comma-spacing': ['error', { 'before': false, 'after': true }],
-    '@typescript-eslint/no-empty-function': ['error', { 'allow': ['functions', 'arrowFunctions'] }],
-    'no-empty-function': ['error', { 'allow': ['functions', 'arrowFunctions'] }],
-    'object-curly-spacing': ['error', 'always'],
-    'space-infix-ops': ['error'],
-    'quotes': ['error', 'single'],
-    'space-before-blocks': [
-      'error',
-      'always'
-    ],
-    '@typescript-eslint/no-use-before-define': [ 'warn', { 'functions': false, 'classes': true, 'variables': false } ],
-    'no-use-before-define': [ 'error', { 'functions': false, 'classes': true, 'variables': false } ],
-    'no-empty': 'error',
-    'no-duplicate-imports': 'error',
-    'semi': ['error', 'never'],
-    'no-irregular-whitespace': 'error',
-    'no-mixed-spaces-and-tabs': 'error',
-    'no-trailing-spaces': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/member-delimiter-style': ['error', {
-      multiline: {
-        delimiter: 'none',    // 'none' or 'semi' or 'comma'
-        requireLast: true,
-      }
-    }],
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'typeLike',
-        format: ['PascalCase']
-      },
-      {
-        selector: 'class',
-        format: ['PascalCase']
-      },
-    ],
+    '@typescript-eslint/no-unused-vars': ['warn'],
   },
-
   overrides: [
     {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
-      ],
-      env: {
-        jest: true
-      }
+      'files': ['*.html'],
+      'processor': 'vue/.vue'
     }
   ]
 }

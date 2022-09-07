@@ -1,31 +1,31 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import GeneralLayout from '@/layouts/General/index.vue'
-import lolBanPickRoutes from './modules/lol'
-import { RouterNameKeyEnum } from '@/types/router/name'
+import HomeLayout from '@/views/homes/Layout/index.vue'
+import exampleRoutes from '@/router/routes/example'
 
-export const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
   {
+    name: 'HomeLayout',
     path: '/',
-    name: RouterNameKeyEnum.GENERAL_LAYOUT,
-    component: GeneralLayout,
+    component: HomeLayout,
     children: [
       {
+        name: 'HomeIndex',
         path: '',
-        name: RouterNameKeyEnum.HOME,
-        component: () => import('@/views/Home/index.vue'),
-        meta: {
-          hidden: true,
-          requiredLogin: true,
-        },
+        component: () => import('@/views/homes/Home/index.vue'),
       },
-      lolBanPickRoutes,
-    ]
+      ...exampleRoutes,
+    ],
   },
+  {
+    name: 'NotFoundError',
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/errors/Notfound/index.vue'),
+  }
 ]
 
-export const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+const router = createRouter({
+  history: createWebHistory(),
+  routes: routes,
 })
 
 export default router

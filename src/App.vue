@@ -1,21 +1,18 @@
 <template>
-  <div
-    class="h-full bg-background"
-  >
-    <snackbar />
-    <router-view />
+  <div>
+    <RouterView />
   </div>
 </template>
+<script setup lang="ts">
+import useSettingStore from '@/store/modules/setting'
+import { useDarkOption } from '@/types/system'
+const settingStore = useSettingStore()
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import Snackbar from '@/components/Snackbar/index.vue'
-
-export default defineComponent({
-  name: 'Prototype',
-  components: { Snackbar },
-  setup () {
-    return
-  }
-})
+/* Initialize Setting */
+// Initialize setting store
+settingStore.initSetting()
+// Dark option
+useDark(useDarkOption)
 </script>
+<style>
+</style>

@@ -1,0 +1,14 @@
+name: unit-tests
+on:
+  pull_request: {} # run for every pull request
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: test:once # will run `yarn test` command

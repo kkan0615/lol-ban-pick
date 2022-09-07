@@ -1,12 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./libs";
+@import "./font.scss";
 
-@import "./color";
-@import "./layout";
-@import "./button";
-@import "./animations";
-@import "./filters";
-@import "./icon";
-@import "./input";
-@import "./sizing";
+body, html {
+  margin: 0;
+  @apply tw-font-roboto dark:tw-bg-background-main-dark dark:tw-text-background-text-dark;
+}
+
+.page-content {
+  @apply tw-mx-auto tw-max-w-content;
+}
+
+h1 {
+  @apply tw-text-7xl;
+}
+
+h2 {
+  @apply tw-text-6xl;
+}
+
+h3 {
+  @apply tw-text-5xl;
+}
+
+h4 {
+  @apply tw-text-4xl;
+}
+
+h5 {
+  @apply tw-text-3xl;
+}
+
+h6 {
+  @apply tw-text-xl;
+}

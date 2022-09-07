@@ -1,14 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './registerServiceWorker'
+/* Pinia */
+import pinia from '@/store'
+/* Router */
+import router from '@/router'
+/* Add Global styles */
 import '@/styles/index.scss'
-import router from './router'
-import '@/router/beforeRouter'
-import { store, key } from './store'
+/* I18n */
+import i18n from '@/locales'
+/* Head */
+import { createHead } from '@vueuse/head'
+const head = createHead()
 
 const app = createApp(App)
-
-app
-  .use(store, key)
-  .use(router)
-  .mount('#app')
+app.use(i18n)
+app.use(pinia)
+app.use(router)
+app.use(head)
+app.mount('#app')

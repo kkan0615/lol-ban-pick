@@ -1,0 +1,11 @@
+.not-found-container {
+  @apply tw-h-screen;
+
+  &-content {
+    @apply tw-px-20 tw-py-32 tw-text-center;
+
+    &__404 {
+      @apply tw-text-6xl tw-capitalize tw-mb-2;
+    }
+  }
+}
