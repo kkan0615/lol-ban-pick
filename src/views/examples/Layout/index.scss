@@ -1,0 +1,9 @@
+.example-layout {
+  @apply tw-pt-32 tw-pb-24;
+
+  &-link {
+    @apply tw-inline-flex tw-items-center;
+    @apply tw-space-x-2;
+    @apply tw-text-zinc-500 hover:tw-text-primary-500 tw-text-sm tw-capitalize
+  }
+}

@@ -1,16 +1,14 @@
 <template>
-  <RouterView />
+  <div
+    class="tw-flex-grow"
+  >
+    <slot />
+  </div>
 </template>
 <script lang="ts">
 export default {
-  name: 'HomeIndex',
+  name: 'FeatureCardItem',
 }
 </script>
 <script setup lang="ts">
-
 </script>
-<style
-  lang="scss"
->
-</style>
-

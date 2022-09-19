@@ -1,0 +1,13 @@
+.pinia-container {
+  @apply tw-text-center;
+
+  button {
+    @apply tw-uppercase;
+    @apply tw-px-4 tw-py-1 tw-rounded-3xl tw-drop-shadow-2xl tw-inline-flex tw-space-x-2;
+  }
+
+  &-action {
+    @apply tw-mt-4;
+    @apply tw-space-x-2;
+  }
+}

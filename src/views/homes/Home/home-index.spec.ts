@@ -3,13 +3,14 @@ import { shallowMount } from '@vue/test-utils'
 import HomeIndex from './index.vue'
 import i18n from '@/locales'
 import { createHead } from '@vueuse/head'
+import router from '@/router'
 
 describe('Home Index.vue', () => {
   const head = createHead()
 
   const wrapper = shallowMount(HomeIndex, {
     global: {
-      plugins: [i18n, head],
+      plugins: [i18n, head, router],
     },
   })
 

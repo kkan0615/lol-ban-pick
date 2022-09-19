@@ -32,9 +32,11 @@ export default defineConfig({
     // PWA
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'auto',
       includeAssets: ['favicon.ico'],
       devOptions: {
         enabled: true,
+        navigateFallbackAllowlist: [/^index.html$/],
       },
       manifest: {
         name: 'vue3-boilerplate',
@@ -50,6 +52,27 @@ export default defineConfig({
           },
         ]
       },
+      workbox: {
+        clientsClaim: true,
+        skipWaiting: true,
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              },
+            }
+          }
+        ]
+      }
     })
   ],
   server: {

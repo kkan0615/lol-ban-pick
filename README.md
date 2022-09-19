@@ -4,35 +4,31 @@ Lightweight and quick starter Pack
 # :bulb: Requirement
 - Over node 16
 
-# :newspaper: Tack stack
+# :newspaper: Feature
 - Vue 3
 - Typescript
 - Vite 3.0
-
-# :gift: Packages
-## Dev tools
-- eslint
-- [vitest](): Unit test with vite
-- Cypress: E2E test
-- [Husky 8](https://github.com/typicode/husky)
-- [carbon icons](https://carbondesignsystem.com/guidelines/icons/library/): Icons
-
-## CDN 
-- [material icon]('https://fonts.google.com/icons): Icons
-
-## Design
-- sass/scss
-- [Tailwind](https://tailwindcss.com/)
-
-## Vue and Vite Plugins
-- [vue-router-v4](https://router.vuejs.org/): Route system
-- [pinia](https://pinia.vuejs.org/): State management
-- [vue-i18n](https://kazupon.github.io/vue-i18n/): Internationalization
-- [Vite Pwa plugin](https://vite-plugin-pwa.netlify.app/): PWA
-- [vue-use](https://github.com/antfu/vueuse): Provide useful utilities to vue project
-- [vueuse/head](https://github.com/vueuse/head): Control head meta
-- [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import): Auto-importing
-
+- PNPM Package manager
+- [Vite Pwa plugin](https://vite-plugin-pwa.netlify.app/) for pwa
+- Test modules are installed
+  - [Cypress](): E2E test
+  - [vitest](): Unit test
+- Collaborative Develop Environment
+  - [Husky 8](https://github.com/typicode/husky)
+  - [eslint]()
+- Many icons
+  - [carbon icons](https://carbondesignsystem.com/guidelines/icons/library/): Icons
+  - [material icon]('https://fonts.google.com/icons): Icons
+- Design libraries
+  - [sass/scss]()
+  - [Tailwind](https://tailwindcss.com/)
+- Mange statement wth [pinia](https://pinia.vuejs.org/)
+- Route system [vue-router-v4](https://router.vuejs.org/)
+- [vue-i18n](https://kazupon.github.io/vue-i18n/) for Internationalization
+- Vue hooks [vue-use](https://github.com/antfu/vueuse) provides useful utilities to vue project
+- Handle SEO meta in head [vueuse/head](https://github.com/vueuse/head)
+- Assist to develop conveniently 
+  - [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import): Auto-importing
   
 ## Recommended
 > Following packages is not installed. Consider packages based on your project before install.
@@ -45,27 +41,27 @@ Lightweight and quick starter Pack
 # :rocket: Getting Started
 ## Dev
 ```shell
-yarn dev
+pnpm run dev
 ```
 ## Build
 ```shell
-yarn build
+pnpm run build
 ```
 ## Eslint
-```
-yarn eslint:fix
+```shell
+pnpm run eslint:fix
 ```
 ## Unit Test
-```
-yarn test
+```shell
+pnpm run test
 ```
 ## Unit test with ui
-```
-yarn test:ui
+```shell
+pnpm run test:ui
 ```
 ## E2E test
-```
-yarn test:e2e
+```shell
+pnpm run test:e2e
 ```
 
 # :hammer: Default settings

@@ -7,6 +7,7 @@ dev-dist
 postcss.config.js
 **/*.json
 **/*.scss
+**/*.css
 **/*.md
 src/env.d.ts
 yarn.lock
