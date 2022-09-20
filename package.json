@@ -16,6 +16,7 @@
   "dependencies": {
     "@vueuse/core": "^9.0.2",
     "@vueuse/head": "^0.7.9",
+    "axios": "^0.27.2",
     "pinia": "^2.0.22",
     "sass": "^1.52.3",
     "vue": "^3.2.25",

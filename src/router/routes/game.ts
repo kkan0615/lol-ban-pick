@@ -13,7 +13,7 @@ const gameRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/games/lols/Layout/index.vue'),
         children: [
           {
-            name: 'LolLayout',
+            name: 'LolCompetitive',
             path: 'competitive',
             component: () => import('@/views/games/lols/Competitive/index.vue'),
           },

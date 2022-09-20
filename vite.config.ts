@@ -77,6 +77,22 @@ export default defineConfig({
   ],
   server: {
     open: true,
+    proxy: {
+      '/lolCdnApi': {
+        target: 'http://ddragon.leagueoflegends.com/cdn',
+        ws: true,
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/lolCdnApi/, '')
+      },
+      '/lolApi': {
+        target: 'http://ddragon.leagueoflegends.com/api',
+        ws: true,
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/lolApi/, '')
+      },
+    }
   },
   resolve: {
     alias,

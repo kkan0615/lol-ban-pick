@@ -144,22 +144,6 @@ pnpm run test:e2e
 ├─ Home/                        # index page.
 ├─ WhatEverName/                # WhatEverName link page
 ```
-
-# :tada: Before start
-## Remove
-- views/examples
-- router/routes
-- "exampleRoutes" in index.ts router folder
-
-# :postbox: Refs
-- [vitesse](https://github.com/antfu/vitesse)
-- [vueye](https://github.com/boussadjra/vueye)
-- [vue2-admin-template](https://github.com/PanJiaChen/vue-element-admin)
-
-# TODO
-- Home page
-  - Feature 
-  - About
-- Simple Example pages
-- i18n for footer
-- Documentation
+# Apis
+## Lols
+(https://developer.riotgames.com/docs/lol)

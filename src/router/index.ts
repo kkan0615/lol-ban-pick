@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeLayout from '@/views/homes/Layout/index.vue'
 import exampleRoutes from '@/router/routes/example'
 import gameRoutes from '@/router/routes/game'
+import streamRoutes from '@/router/routes/stream'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -18,6 +19,7 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   ...gameRoutes,
+  ...streamRoutes,
   {
     name: 'NotFoundError',
     path: '/:pathMatch(.*)*',
