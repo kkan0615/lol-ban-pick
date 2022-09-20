@@ -40,13 +40,6 @@ export default {
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@vueuse/head'
-import { featureList } from '@/types/models/views/feature'
-import GithubIcon from '@/components/icons/Github.vue'
-import FeatureCard from '@/views/homes/Home/components/FeatureCard.vue'
-import FeatureCardIcon from '@/views/homes/Home/components/FeatureCardIcon.vue'
-import FeatureCardItem from '@/views/homes/Home/components/FeatureCardItem.vue'
-import FeatureCardHeader from '@/views/homes/Home/components/FeatureCardHeader.vue'
-import FeatureCardBody from '@/views/homes/Home/components/FeatureCardBody.vue'
 
 const i18n = useI18n()
 
