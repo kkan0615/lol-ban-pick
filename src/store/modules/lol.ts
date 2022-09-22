@@ -2,12 +2,12 @@ import { defineStore } from 'pinia'
 import { LolLanguagesType } from '@/types/models/lols/language'
 import { LolSummonSpell } from '@/types/models/lols/summonSpell'
 import lolRequest from '@/utils/requests/lol'
-import { LolChampion, LolChampionListReq } from '@/types/models/lols/champion'
+import { LolChampionBanPick, LolChampionListReq } from '@/types/models/lols/champion'
 
 export interface LolState {
   versionList: string[]
   languageList: LolLanguagesType[]
-  championList: Record<string, LolChampion>
+  championList: Record<string, LolChampionBanPick>
   spellList: LolSummonSpell[]
   version: string
   language: LolLanguagesType
@@ -90,7 +90,14 @@ const useLolStore = defineStore('lol', {
         // 12.18.1/data/en_US/champion.json
         const res =
           await lolRequest.get<LolChampionListReq>(`/lolCdnApi/${this.version}/data/${this.language}/champion.json`)
-        this.championList = res.data.data
+        const resChampionList = res.data.data
+        for (const resChampionListKey in resChampionList) {
+          this.championList[resChampionListKey] = {
+            champion: resChampionList[resChampionListKey],
+            picked: false,
+            banded: false,
+          } as LolChampionBanPick
+        }
       } catch (e) {
         console.error(e)
         throw e
