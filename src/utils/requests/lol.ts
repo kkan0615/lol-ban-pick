@@ -1,13 +1,12 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-const lolRequestInstance = axios.create(({
-  baseURL: process.env.BASE_API || 'http://127.0.0.1:8001/',
+const lolRequest = axios.create(({
   timeout: 5000,
   withCredentials: true
 }))
 
 /* Handle request to server */
-lolRequestInstance.interceptors.request.use((config: AxiosRequestConfig) => {
+lolRequest.interceptors.request.use((config: AxiosRequestConfig) => {
   //
   return config
 }, (error) => {
@@ -16,7 +15,7 @@ lolRequestInstance.interceptors.request.use((config: AxiosRequestConfig) => {
 })
 
 /* Handle response from server */
-lolRequestInstance.interceptors.response.use((config: AxiosResponse) => {
+lolRequest.interceptors.response.use((config: AxiosResponse) => {
   // @DESCRIBE: Response from server
 
   return config
@@ -32,4 +31,4 @@ lolRequestInstance.interceptors.response.use((config: AxiosResponse) => {
   throw error.response
 })
 
-export default lolRequestInstance
+export default lolRequest

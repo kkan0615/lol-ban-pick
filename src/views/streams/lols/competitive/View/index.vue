@@ -32,11 +32,10 @@ const _destroyChannel = () => {
   }
 }
 
+/* Created */
 _openChannel()
 
 onBeforeUnmount(() => {
   _destroyChannel()
 })
-
 </script>
-

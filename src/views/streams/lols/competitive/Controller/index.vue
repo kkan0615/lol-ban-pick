@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div>
+      {{ version }}
+    </div>
+    <div>
+      {{ language }}
+    </div>
+    <div>
+      {{ Object.values(championList).map(champion => champion.name) }}
+    </div>
     StreamLolCompetitive Controller
   </div>
 </template>
@@ -10,8 +19,12 @@ export default {
 </script>
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import useLolStore from '@/store/modules/lol'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
+const lolStore = useLolStore()
+const { version, language, championList } = storeToRefs(lolStore)
 
 const broadcastChannel = ref<BroadcastChannel | null>(null)
 
@@ -32,11 +45,10 @@ const _destroyChannel = () => {
   }
 }
 
+/* Created */
 _openChannel()
 
 onBeforeUnmount(() => {
   _destroyChannel()
 })
-
 </script>
-

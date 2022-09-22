@@ -63,6 +63,16 @@ export interface LolChampionStats {
   attackspeed: number
 }
 
+/**
+ *
+ */
+export interface LolChampionListReq {
+  data: Record<string, LolChampion>
+  format: string
+  type: string
+  version: string
+}
+
 export interface LolChampionBanPick {
   champion: LolChampion
   picked: boolean
