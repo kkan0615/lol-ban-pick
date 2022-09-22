@@ -5,8 +5,18 @@ export interface LolStreamPlayer {
   name: string
 }
 
+export interface LolStreamSettingTeam {
+  logo: string
+  name: string
+  win: number
+}
+
+export interface LolStreamSetting {
+  blueTeam: LolStreamSettingTeam
+  redTeam: LolStreamSettingTeam
+}
+
 export interface LolStreamPick {
   champion: LolChampion
-  spellOne?: LolSummonSpell
-  spellTwo?: LolSummonSpell
+  spellList: [LolSummonSpell | undefined, LolSummonSpell | undefined],
 }

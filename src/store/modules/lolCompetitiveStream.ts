@@ -5,6 +5,8 @@ import useLolStore from '@/store/modules/lol'
 import { LolStreamPick } from '@/types/models/lols/stream'
 
 export interface LolCompetitiveStream {
+  timer: NodeJS.Timeout | null
+  seconds: number
   step: LolCompetitiveStep
   blueTeamPlayerList: string[]
   redTeamPlayerList: string[]
@@ -17,6 +19,8 @@ export interface LolCompetitiveStream {
 const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
   state: (): LolCompetitiveStream => {
     return {
+      timer: null,
+      seconds: 60,
       step: 0,
       blueTeamPlayerList: [],
       redTeamPlayerList: [],
@@ -37,6 +41,22 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
     // },
   },
   actions: {
+    resetTimer() {
+      this.clearTimer()
+      this.seconds = 60
+      this.timer = setInterval(() => {
+        this.seconds -= 1
+        if (this.seconds <= 0) {
+          this.clearTimer()
+        }
+      }, 1000)
+    },
+    clearTimer() {
+      if (this.timer) {
+        clearInterval(this.timer)
+        this.timer = null
+      }
+    },
     /**
      * Pass to next step
      * @param champion {LolChampion} : Selected champion
@@ -51,8 +71,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_BAN_1: {
           this.blueTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -60,8 +79,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_BAN_1: {
           this.redTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -69,8 +87,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_BAN_2: {
           this.blueTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -78,8 +95,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_BAN_2: {
           this.redTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -87,8 +103,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_BAN_3: {
           this.blueTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -96,8 +111,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_BAN_3: {
           this.redTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -105,8 +119,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_PICK_1: {
           this.blueTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -114,8 +127,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_PICK_1: {
           this.redTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -123,8 +135,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_PICK_2: {
           this.redTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -132,8 +143,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_PICK_2: {
           this.blueTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -141,8 +151,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_PICK_3: {
           this.blueTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -150,8 +159,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_PICK_3: {
           this.redTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -159,8 +167,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_BAN_4: {
           this.redTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -168,8 +175,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_BAN_4: {
           this.blueTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -177,8 +183,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_BAN_5: {
           this.redTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -186,8 +191,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_BAN_5: {
           this.blueTeamBanList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].banded = true
           break
@@ -195,8 +199,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_PICK_4: {
           this.redTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -204,8 +207,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_PICK_4: {
           this.blueTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -213,8 +215,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.BLUE_PICK_5: {
           this.blueTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
@@ -222,14 +223,14 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         case LolCompetitiveStep.RED_PICK_5: {
           this.redTeamPickList.push({
             champion: champion,
-            spellOne: undefined,
-            spellTwo: undefined,
+            spellList: [undefined, undefined],
           })
           lolStore.championList[champion.id].picked = true
           break
         }
       }
       ++this.step
+      this.resetTimer()
     },
     /**
      * back to prev step
@@ -360,6 +361,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         }
       }
       ++this.step
+      this.resetTimer()
     },
   }
 })

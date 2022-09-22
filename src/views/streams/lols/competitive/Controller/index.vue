@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div
+    class="page-container"
+  >
     <div>
       {{ version }}
     </div>
@@ -7,7 +9,7 @@
       {{ language }}
     </div>
     <div>
-      {{ Object.values(championList).map(champion => champion.name) }}
+      {{ Object.values(championList).map(element => element.champion.name) }}
     </div>
     StreamLolCompetitive Controller
   </div>
@@ -24,6 +26,7 @@ import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const lolStore = useLolStore()
+
 const { version, language, championList } = storeToRefs(lolStore)
 
 const broadcastChannel = ref<BroadcastChannel | null>(null)
@@ -46,9 +49,16 @@ const _destroyChannel = () => {
 }
 
 /* Created */
+
 _openChannel()
 
 onBeforeUnmount(() => {
   _destroyChannel()
 })
 </script>
+<style
+  lang="scss"
+  scoped
+>
+@import "./index.scss";
+</style>
