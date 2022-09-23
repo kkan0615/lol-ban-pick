@@ -23,3 +23,8 @@ export interface LolStreamPick {
   champion: LolChampion
   spellList: [LolSummonSpell | undefined, LolSummonSpell | undefined],
 }
+
+export enum LolStreamChannelKey {
+  'PREV_STEP' = 'prevStep',
+  'NEXT_STEP' = 'nextStep',
+}

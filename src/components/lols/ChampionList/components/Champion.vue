@@ -1,20 +1,23 @@
 <template>
-  <UseImage
-    :src="`/lolCdnApi/${version}/img/champion/${champion.champion.id}.png`"
+  <div
     :class="{
       'tw-cursor-pointer': !champion.picked && !champion.banded,
       'tw-grayscale': champion.picked || champion.banded
     }"
     @click="handleClick"
   >
-    <template #loading>
-      <LolChampionListChampionLoading />
-    </template>
+    <UseImage
+      :src="`/lolCdnApi/${props.version}/img/champion/${props.champion.champion.id}.png`"
+    >
+      <template #loading>
+        <LolChampionListChampionLoading />
+      </template>
 
-    <template #error>
-      Failed
-    </template>
-  </UseImage>
+      <template #error>
+        Failed
+      </template>
+    </UseImage>
+  </div>
 </template>
 <script lang="ts">
 export default {
@@ -37,11 +40,12 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'click', champion: LolChampionBanPick): void
+  (e: 'clicked', champion: LolChampionBanPick): void
 }>()
 
 const handleClick = () => {
-  emit('click', props.champion)
+  if (!props.champion.picked && !props.champion.banded)
+    emit('clicked', props.champion)
 }
 
 </script>

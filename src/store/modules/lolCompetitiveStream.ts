@@ -54,9 +54,9 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
     setReadTeam(newTeam: Partial<LolStreamSettingTeam>) {
       this.redTeam = { ...this.blueTeam, ...newTeam }
     },
-    resetTimer() {
+    resetTimer(seconds = 60) {
       this.clearTimer()
-      this.seconds = 60
+      this.seconds = seconds
       this.timer = setInterval(() => {
         this.seconds -= 1
         if (this.seconds <= 0) {
@@ -242,8 +242,12 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
           break
         }
       }
-      ++this.step
-      this.resetTimer()
+      if(this.step !== LolCompetitiveStep.END) {
+        ++this.step
+        this.resetTimer()
+      } else {
+        this.resetTimer(100)
+      }
     },
     /**
      * back to prev step
@@ -373,7 +377,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
           break
         }
       }
-      ++this.step
+      --this.step
       this.resetTimer()
     },
   }

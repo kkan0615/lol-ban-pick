@@ -16,8 +16,13 @@
         :key="champion.champion.key"
         :champion="champion"
         :version="version"
-        @click="clickChampion"
+        @clicked="clickChampion"
       />
+      <!--      <LolChampionListChampion-->
+      <!--        :champion="championListBySearch[0]"-->
+      <!--        :version="version"-->
+      <!--        @clicked="clickChampion"-->
+      <!--      />-->
     </div>
   </div>
 </template>
@@ -40,7 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
   version: ''
 })
 const emit = defineEmits<{
-  (e: 'click', champion: LolChampionBanPick): void
+  (e: 'clicked', champion: LolChampionBanPick): void
 }>()
 
 const searchText = ref('')
@@ -52,7 +57,7 @@ const championListBySearch = computed(() => {
 })
 
 const clickChampion = (champion: LolChampionBanPick) => {
-  emit('click', champion)
+  emit('clicked', champion)
 }
 
 </script>

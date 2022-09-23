@@ -29,7 +29,7 @@
           <LolChampionList
             :version="version"
             :champion-list="Object.values(championList)"
-            @click="clickChampion"
+            @clicked="clickChampion"
           />
         </div>
         <div
@@ -56,6 +56,7 @@ import { storeToRefs } from 'pinia'
 import LolChampionList from '@/components/lols/ChampionList/index.vue'
 import { LolChampionBanPick } from '@/types/models/lols/champion'
 import useLolCompetitiveStreamStore from '@/store/modules/lolCompetitiveStream'
+import { LolStreamChannelKey } from '@/types/models/lols/stream'
 
 const route = useRoute()
 const lolStore = useLolStore()
@@ -84,6 +85,7 @@ const _destroyChannel = () => {
 
 const clickChampion = (champion: LolChampionBanPick) => {
   streamStore.nextStep(champion.champion)
+  broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.NEXT_STEP, data: JSON.stringify(champion) })
 }
 
 /* Created */

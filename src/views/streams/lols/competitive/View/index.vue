@@ -3,8 +3,29 @@
     class="page-container"
   >
     <StreamLolCompetitiveViewHeader />
-    <div>
-      view
+    <div
+      class="tw-flex"
+    >
+      <div
+        class="tw-w-1/2"
+      >
+        <div>
+          {{ blueTeamBanList.map((champion) => champion.champion.name) }}
+        </div>
+        <div>
+          {{ blueTeamPickList.map((champion) => champion.champion.name) }}
+        </div>
+      </div>
+      <div
+        class="tw-w-1/2"
+      >
+        <div>
+          {{ redTeamBanList.map((champion) => champion.champion.name) }}
+        </div>
+        <div>
+          {{ redTeamPickList.map((champion) => champion.champion.name) }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -17,10 +38,14 @@ export default {
 import { useRoute } from 'vue-router'
 import StreamLolCompetitiveViewHeader from '@/views/streams/lols/competitive/View/components/Header.vue'
 import useLolCompetitiveStreamStore from '@/store/modules/lolCompetitiveStream'
+import { LolStreamChannelKey } from '@/types/models/lols/stream'
+import { LolChampionBanPick } from '@/types/models/lols/champion'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute()
 const streamStore = useLolCompetitiveStreamStore()
 
+const { blueTeam, redTeam, blueTeamPickList, redTeamPickList, blueTeamBanList, redTeamBanList } = storeToRefs(streamStore)
 const broadcastChannel = ref<BroadcastChannel | null>(null)
 
 const _openChannel = () => {
@@ -28,7 +53,15 @@ const _openChannel = () => {
   if (channel) {
     broadcastChannel.value = new BroadcastChannel(channel as string)
     broadcastChannel.value.addEventListener('message', (event) => {
-      console.log(event.data)
+      const { key, data } = event.data as { key: LolStreamChannelKey, data: any }
+      switch (key) {
+        case LolStreamChannelKey.PREV_STEP:
+          streamStore.prevStep()
+          break
+        case LolStreamChannelKey.NEXT_STEP:
+          streamStore.nextStep((JSON.parse(data) as LolChampionBanPick).champion)
+          break
+      }
     })
   }
 }
