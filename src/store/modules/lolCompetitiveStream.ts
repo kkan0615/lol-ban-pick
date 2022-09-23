@@ -2,12 +2,14 @@ import { defineStore } from 'pinia'
 import { LolChampion } from '@/types/models/lols/champion'
 import { LolCompetitiveStep } from '@/types/models/lols/competitive'
 import useLolStore from '@/store/modules/lol'
-import { LolStreamPick } from '@/types/models/lols/stream'
+import { LolStreamPick, LolStreamSettingTeam } from '@/types/models/lols/stream'
 
 export interface LolCompetitiveStream {
   timer: NodeJS.Timeout | null
   seconds: number
   step: LolCompetitiveStep
+  blueTeam: LolStreamSettingTeam
+  redTeam: LolStreamSettingTeam
   blueTeamPlayerList: string[]
   redTeamPlayerList: string[]
   blueTeamPickList: LolStreamPick[]
@@ -22,6 +24,8 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
       timer: null,
       seconds: 60,
       step: 0,
+      blueTeam: {} as LolStreamSettingTeam,
+      redTeam: {} as LolStreamSettingTeam,
       blueTeamPlayerList: [],
       redTeamPlayerList: [],
       blueTeamPickList: [],
@@ -41,6 +45,15 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
     // },
   },
   actions: {
+    initTeams() {
+    //
+    },
+    setBlueTeam(newTeam: Partial<LolStreamSettingTeam>) {
+      this.blueTeam = { ...this.blueTeam, ...newTeam }
+    },
+    setReadTeam(newTeam: Partial<LolStreamSettingTeam>) {
+      this.redTeam = { ...this.blueTeam, ...newTeam }
+    },
     resetTimer() {
       this.clearTimer()
       this.seconds = 60

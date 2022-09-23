@@ -11,6 +11,9 @@ export interface LolStreamSettingTeam {
   win: number
 }
 
+export type LolStreamSettingTeamForm = Partial<LolStreamSettingTeam>
+
+
 export interface LolStreamSetting {
   blueTeam: LolStreamSettingTeam
   redTeam: LolStreamSettingTeam

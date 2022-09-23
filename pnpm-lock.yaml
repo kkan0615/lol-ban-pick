@@ -9,6 +9,7 @@ specifiers:
   '@vue/compiler-dom': ^3.2.39
   '@vue/eslint-config-typescript': ^11.0.1
   '@vue/test-utils': ^2.0.2
+  '@vueuse/components': ^9.2.0
   '@vueuse/core': ^9.0.2
   '@vueuse/head': ^0.7.9
   autoprefixer: ^10.4.7
@@ -35,6 +36,7 @@ specifiers:
   vue-tsc: ^0.34.7
 
 dependencies:
+  '@vueuse/components': 9.2.0_vue@3.2.39
   '@vueuse/core': 9.2.0_vue@3.2.39
   '@vueuse/head': 0.7.12_vue@3.2.39
   axios: 0.27.2
@@ -1887,6 +1889,17 @@ packages:
     dependencies:
       vue: 3.2.39
     dev: true
+
+  /@vueuse/components/9.2.0_vue@3.2.39:
+    resolution: {integrity: sha512-NgQRhq5v1LRZsQq21rJlY8VjEqYg5xWiGErBftY+HaBhHsLAn4PxJxtvbe9uZNdOQlRdWM3UPUF6NO/sWfnyWw==}
+    dependencies:
+      '@vueuse/core': 9.2.0_vue@3.2.39
+      '@vueuse/shared': 9.2.0_vue@3.2.39
+      vue-demi: 0.13.11_vue@3.2.39
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@vueuse/core/9.2.0_vue@3.2.39:
     resolution: {integrity: sha512-/MZ6qpz6uSyaXrtoeBWQzAKRG3N7CvfVWvQxiM3ei3Xe5ydOjjtVbo7lGl9p8dECV93j7W8s63A8H0kFLpLyxg==}

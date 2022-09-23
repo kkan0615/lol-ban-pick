@@ -16,12 +16,10 @@ export default {
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import StreamLolCompetitiveViewHeader from '@/views/streams/lols/competitive/View/components/Header.vue'
-import useLolStore from '@/store/modules/lol'
 import useLolCompetitiveStreamStore from '@/store/modules/lolCompetitiveStream'
 
 const route = useRoute()
 const streamStore = useLolCompetitiveStreamStore()
-
 
 const broadcastChannel = ref<BroadcastChannel | null>(null)
 
