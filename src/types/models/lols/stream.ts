@@ -25,6 +25,11 @@ export interface LolStreamPick {
 }
 
 export enum LolStreamChannelKey {
+  'START_GAME' = 'startGame',
+  'PAUSE_GAME' = 'pauseGame',
+  'CONTINUE_GAME' = 'continueGame',
+  'RESET_GAME' = 'resetGame',
+  'RESET_ALL' = 'resetAll',
   'PREV_STEP' = 'prevStep',
   'NEXT_STEP' = 'nextStep',
 }

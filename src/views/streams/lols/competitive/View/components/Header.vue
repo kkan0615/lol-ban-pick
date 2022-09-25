@@ -5,7 +5,12 @@
     <div
       class="tw-w-2/5 tw-flex"
     >
-      left
+      <div>
+        {{ blueTeam.win || 0 }}
+      </div>
+      <div>
+        {{ blueTeam.name }}
+      </div>
     </div>
     <div
       class="tw-w-1/5 tw-flex"
@@ -15,7 +20,12 @@
     <div
       class="tw-w-2/5 tw-flex"
     >
-      right
+      <div>
+        {{ redTeam.name }}
+      </div>
+      <div>
+        {{ redTeam.win || 0 }}
+      </div>
     </div>
   </header>
 </template>
@@ -30,6 +40,6 @@ import { storeToRefs } from 'pinia'
 
 const streamStore = useLolCompetitiveStreamStore()
 
-const { seconds } = storeToRefs(streamStore)
+const { seconds, blueTeam, redTeam } = storeToRefs(streamStore)
 </script>
 

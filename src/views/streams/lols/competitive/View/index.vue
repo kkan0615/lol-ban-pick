@@ -55,6 +55,20 @@ const _openChannel = () => {
     broadcastChannel.value.addEventListener('message', (event) => {
       const { key, data } = event.data as { key: LolStreamChannelKey, data: any }
       switch (key) {
+        case LolStreamChannelKey.START_GAME:
+          streamStore.setBlueTeam(data.blueTeam)
+          streamStore.setRedTeam(data.redTeam)
+          streamStore.startGame()
+          break
+        case LolStreamChannelKey.PAUSE_GAME:
+          streamStore.pauseGame()
+          break
+        case LolStreamChannelKey.CONTINUE_GAME:
+          streamStore.continueGame()
+          break
+        case LolStreamChannelKey.RESET_GAME:
+          streamStore.resetGame()
+          break
         case LolStreamChannelKey.PREV_STEP:
           streamStore.prevStep()
           break
@@ -75,7 +89,6 @@ const _destroyChannel = () => {
 
 /* Created */
 _openChannel()
-streamStore.resetTimer()
 
 onBeforeUnmount(() => {
   _destroyChannel()

@@ -7,6 +7,7 @@ import { LolStreamPick, LolStreamSettingTeam } from '@/types/models/lols/stream'
 export interface LolCompetitiveStream {
   timer: NodeJS.Timeout | null
   seconds: number
+  status: 'ready' | 'running' | 'pause' | 'done',
   step: LolCompetitiveStep
   blueTeam: LolStreamSettingTeam
   redTeam: LolStreamSettingTeam
@@ -23,9 +24,14 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
     return {
       timer: null,
       seconds: 60,
+      status: 'ready',
       step: 0,
-      blueTeam: {} as LolStreamSettingTeam,
-      redTeam: {} as LolStreamSettingTeam,
+      blueTeam: {
+        win: 0
+      } as LolStreamSettingTeam,
+      redTeam: {
+        win: 0
+      } as LolStreamSettingTeam,
       blueTeamPlayerList: [],
       redTeamPlayerList: [],
       blueTeamPickList: [],
@@ -51,7 +57,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
     setBlueTeam(newTeam: Partial<LolStreamSettingTeam>) {
       this.blueTeam = { ...this.blueTeam, ...newTeam }
     },
-    setReadTeam(newTeam: Partial<LolStreamSettingTeam>) {
+    setRedTeam(newTeam: Partial<LolStreamSettingTeam>) {
       this.redTeam = { ...this.blueTeam, ...newTeam }
     },
     resetTimer(seconds = 60) {
@@ -60,6 +66,9 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
       this.timer = setInterval(() => {
         this.seconds -= 1
         if (this.seconds <= 0) {
+          if (seconds === 60) {
+            this.status = 'done'
+          }
           this.clearTimer()
         }
       }, 1000)
@@ -69,6 +78,30 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         clearInterval(this.timer)
         this.timer = null
       }
+    },
+    startGame() {
+      this.resetTimer()
+      this.status = 'running'
+    },
+    pauseGame() {
+      this.clearTimer()
+      this.status = 'pause'
+    },
+    continueGame() {
+      this.resetTimer(this.seconds)
+      this.status = 'running'
+    },
+    resetGame() {
+      this.clearTimer()
+      this.seconds = 60
+      this.status = 'ready'
+      this.step = 0
+      this.blueTeamPlayerList = []
+      this.redTeamPlayerList = []
+      this.blueTeamPickList = []
+      this.redTeamPickList = []
+      this.blueTeamBanList = []
+      this.redTeamBanList = []
     },
     /**
      * Pass to next step
@@ -246,6 +279,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
         ++this.step
         this.resetTimer()
       } else {
+        this.status = 'done'
         this.resetTimer(100)
       }
     },
@@ -260,6 +294,7 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
           const element = this.blueTeamBanList.pop()
           if (element)
             lolStore.championList[element.champion.id].banded = false
+          this.status = 'ready'
           break
         }
         case LolCompetitiveStep.RED_BAN_1: {

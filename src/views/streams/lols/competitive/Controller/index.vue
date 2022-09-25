@@ -20,13 +20,41 @@
       <div
         class="tw-ml-auto tw-flex tw-space-x-2"
       >
+        <div>
+          {{ status }}
+        </div>
         <v-btn
+          v-if="status !== 'running' && status !== 'pause'"
+          color="primary"
+          @click="onClickStartBtn"
+        >
+          Start game
+        </v-btn>
+        <v-btn
+          v-if="status === 'pause'"
+          color="primary"
+          @click="onClickContinueBtn"
+        >
+          Continue game
+        </v-btn>
+        <v-btn
+          v-if="status === 'running'"
+          color="primary"
+          @click="onClickPauseBtn"
+        >
+          Pause game
+        </v-btn>
+        <v-btn
+          v-if="status === 'done' || status === 'pause'"
           color="warning"
+          @click="onClickRestGameBtn"
         >
           Reset game
         </v-btn>
         <v-btn
+          v-if="status === 'done' || status === 'pause'"
           color="error"
+          @click="onClickRestAllBtn"
         >
           Reset all
         </v-btn>
@@ -36,12 +64,21 @@
       class="tw-grow tw-h-1"
     >
       <div
-        class="tw-flex tw-h-full"
+        class="tw-flex tw-h-full tw-space-x-4"
       >
         <div
           class="tw-w-1/5"
         >
           left
+          <v-text-field
+            v-model="blueTeam.name"
+            label="Team name"
+          />
+          <v-text-field
+            v-model="blueTeam.win"
+            label="Team win"
+            type="number"
+          />
         </div>
         <div
           class="tw-w-3/5 tw-h-full"
@@ -84,6 +121,7 @@ const lolStore = useLolStore()
 const streamStore = useLolCompetitiveStreamStore()
 
 const { version, language, versionList, championList } = storeToRefs(lolStore)
+const { status, blueTeam, redTeam } = storeToRefs(streamStore)
 
 const broadcastChannel = ref<BroadcastChannel | null>(null)
 
@@ -112,6 +150,35 @@ const clickChampion = (champion: LolChampionBanPick) => {
 const changeVersion = (newVersion: string) => {
   lolStore.setVersion(newVersion)
   lolStore.loadChampionList()
+}
+
+const onClickStartBtn = () => {
+  status.value = 'running'
+  console.log('blueTeam', blueTeam.value)
+  console.log('redTeam', redTeam.value)
+  broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.START_GAME, data: JSON.stringify({
+    blueTeam: blueTeam.value,
+    redTeam: redTeam.value
+  }) })
+}
+
+const onClickPauseBtn = () => {
+  status.value = 'pause'
+  broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.PAUSE_GAME })
+}
+
+const onClickContinueBtn = () => {
+  status.value = 'running'
+  broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.CONTINUE_GAME })
+}
+
+const onClickRestGameBtn = () => {
+  broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.RESET_GAME })
+
+}
+
+const onClickRestAllBtn = () => {
+  broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.CONTINUE_GAME })
 }
 
 /* Created */
