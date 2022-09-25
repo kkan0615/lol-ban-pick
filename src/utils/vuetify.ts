@@ -9,15 +9,18 @@ const lightTheme: ThemeDefinition = {
   dark: false,
   colors: {
     background: colors.white,
-    surface: '#FFFFFF',
     primary: '#41B883',
-    'primary-darken-1': '#41B883',
+    'on-primary': colors.white,
     secondary: '#34495E',
-    'secondary-darken-1': '#9C27B0',
+    'on-secondary': colors.white,
     error: '#F44336',
+    'on-error': colors.white,
     info: '#31CCEC',
+    'on-info': colors.white,
     success: '#21BA45',
+    'on-success': colors.white,
     warning: '#F2C037',
+    'on-warning': colors.white,
   }
 }
 
@@ -25,15 +28,18 @@ const darkTheme: ThemeDefinition = {
   dark: true,
   colors: {
     background: colors.zinc['900'],
-    surface: '#FFFFFF',
     primary: '#41B883',
-    'primary-darken-1': '#41B883',
+    'on-primary': colors.white,
     secondary: '#34495E',
-    'secondary-darken-1': '#9C27B0',
+    'on-secondary': colors.white,
     error: '#F44336',
+    'on-error': colors.white,
     info: '#31CCEC',
+    'on-info': colors.white,
     success: '#21BA45',
+    'on-success': colors.white,
     warning: '#F2C037',
+    'on-warning': colors.white,
   }
 }
 const vuetify = createVuetify({

@@ -2,11 +2,19 @@
   <div
     class="tw-h-full tw-flex tw-flex-col tw-space-y-2"
   >
-    <div>
-      <input
-        v-model="searchText"
-        type="text"
+    <div
+      class="tw-flex"
+    >
+      <div
+        class="tw-ml-auto tw-w-80"
       >
+        <v-text-field
+          v-model="searchText"
+          density="compact"
+          hide-details
+          placeholder="search"
+        />
+      </div>
     </div>
     <div
       class="tw-grid tw-grid-cols-6 tw-gap-2 tw-overflow-auto"

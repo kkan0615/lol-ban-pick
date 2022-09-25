@@ -36,6 +36,12 @@ const useLolStore = defineStore('lol', {
   },
   actions: {
     /**
+     * Set version
+     */
+    setVersion(newVersion: string) {
+      this.version = newVersion
+    },
+    /**
      *
      */
     async loadVersionList () {
@@ -87,10 +93,10 @@ const useLolStore = defineStore('lol', {
      */
     async loadChampionList () {
       try {
-        // 12.18.1/data/en_US/champion.json
         const res =
           await lolRequest.get<LolChampionListReq>(`/lolCdnApi/${this.version}/data/${this.language}/champion.json`)
         const resChampionList = res.data.data
+        this.resetChampionList()
         for (const resChampionListKey in resChampionList) {
           this.championList[resChampionListKey] = {
             champion: resChampionList[resChampionListKey],

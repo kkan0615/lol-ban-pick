@@ -3,13 +3,33 @@
     class="page-container"
   >
     <div
-      class="tw-grow-0 tw-shrink"
+      class="tw-flex tw-space-x-2 tw-p-2 tw-grow-0 tw-shrink"
     >
       <div>
-        {{ version }}
+        <div>
+          <lol-version-select
+            :version="version"
+            :items="versionList"
+            @changed="changeVersion"
+          />
+        </div>
+        <div>
+          {{ language }}
+        </div>
       </div>
-      <div>
-        {{ language }}
+      <div
+        class="tw-ml-auto tw-flex tw-space-x-2"
+      >
+        <v-btn
+          color="warning"
+        >
+          Reset game
+        </v-btn>
+        <v-btn
+          color="error"
+        >
+          Reset all
+        </v-btn>
       </div>
     </div>
     <div
@@ -53,16 +73,17 @@ export default {
 import { useRoute } from 'vue-router'
 import useLolStore from '@/store/modules/lol'
 import { storeToRefs } from 'pinia'
-import LolChampionList from '@/components/lols/ChampionList/index.vue'
 import { LolChampionBanPick } from '@/types/models/lols/champion'
 import useLolCompetitiveStreamStore from '@/store/modules/lolCompetitiveStream'
 import { LolStreamChannelKey } from '@/types/models/lols/stream'
+import LolVersionSelect from '@/components/lols/VersionSelect/index.vue'
+import LolChampionList from '@/components/lols/ChampionList/index.vue'
 
 const route = useRoute()
 const lolStore = useLolStore()
 const streamStore = useLolCompetitiveStreamStore()
 
-const { version, language, championList } = storeToRefs(lolStore)
+const { version, language, versionList, championList } = storeToRefs(lolStore)
 
 const broadcastChannel = ref<BroadcastChannel | null>(null)
 
@@ -86,6 +107,11 @@ const _destroyChannel = () => {
 const clickChampion = (champion: LolChampionBanPick) => {
   streamStore.nextStep(champion.champion)
   broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.NEXT_STEP, data: JSON.stringify(champion) })
+}
+
+const changeVersion = (newVersion: string) => {
+  lolStore.setVersion(newVersion)
+  lolStore.loadChampionList()
 }
 
 /* Created */
