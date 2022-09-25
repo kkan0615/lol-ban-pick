@@ -22,7 +22,8 @@
     "sass": "^1.52.3",
     "vue": "^3.2.25",
     "vue-i18n": "next",
-    "vue-router": "4"
+    "vue-router": "4",
+    "vuetify": "3.0.0-beta.11"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",

@@ -26,12 +26,15 @@ export default {
 </script>
 <script setup lang="ts">
 import { useDarkOption } from '@/types/system'
+import { useTheme } from 'vuetify'
 
 const isDark = useDark(useDarkOption)
 const toggleDark = useToggle(isDark)
+const theme = useTheme()
 
 const onClickToggleDarkBtn = () => {
   toggleDark()
+  theme.global.name.value = isDark.value ? 'darkTheme' : 'lightTheme'
 }
 </script>
 <style
