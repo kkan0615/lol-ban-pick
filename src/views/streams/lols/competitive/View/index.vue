@@ -2,29 +2,57 @@
   <div
     class="page-container"
   >
+    <!-- Header -->
     <StreamLolCompetitiveViewHeader />
+    <!-- content -->
     <div
-      class="tw-flex"
+      class="view-content"
     >
       <div
-        class="tw-w-1/2"
+        class="view-content-team"
       >
-        <div>
-          {{ blueTeamBanList.map((champion) => champion.champion.name) }}
-        </div>
         <div>
           {{ blueTeamPickList.map((champion) => champion.champion.name) }}
         </div>
       </div>
       <div
-        class="tw-w-1/2"
+        class="view-content-team"
       >
-        <div>
-          {{ redTeamBanList.map((champion) => champion.champion.name) }}
-        </div>
+        center
+      </div>
+      <div
+        class="view-content-team"
+      >
         <div>
           {{ redTeamPickList.map((champion) => champion.champion.name) }}
         </div>
+      </div>
+    </div>
+    <!-- Bottom -->
+    <div
+      class="view-bottom"
+    >
+      <div
+        class="view-bottom-team"
+      >
+        <LolBanList
+          :ban-list="blueTeamBanList"
+          :version="version"
+        />
+      </div>
+      <div
+        class="view-bottom-team"
+      >
+        center
+      </div>
+      <div
+        class="view-bottom-team"
+      >
+        <LolBanList
+          :ban-list="redTeamBanList"
+          :version="version"
+          :is-red="true"
+        />
       </div>
     </div>
   </div>
@@ -38,14 +66,18 @@ export default {
 import { useRoute } from 'vue-router'
 import StreamLolCompetitiveViewHeader from '@/views/streams/lols/competitive/View/components/Header.vue'
 import useLolCompetitiveStreamStore from '@/store/modules/lolCompetitiveStream'
-import { LolStreamChannelKey } from '@/types/models/lols/stream'
+import { LolStreamChannelKey, LolStreamSettingTeam } from '@/types/models/lols/stream'
 import { LolChampionBanPick } from '@/types/models/lols/champion'
 import { storeToRefs } from 'pinia'
+import LolBanList from '@/components/lols/BanList/index.vue'
+import useLolStore from '@/store/modules/lol'
 
 const route = useRoute()
 const streamStore = useLolCompetitiveStreamStore()
+const lolStore = useLolStore()
 
-const { blueTeam, redTeam, blueTeamPickList, redTeamPickList, blueTeamBanList, redTeamBanList } = storeToRefs(streamStore)
+const { version } = storeToRefs(lolStore)
+const { blueTeamPickList, redTeamPickList, blueTeamBanList, redTeamBanList } = storeToRefs(streamStore)
 const broadcastChannel = ref<BroadcastChannel | null>(null)
 
 const _openChannel = () => {
@@ -55,11 +87,13 @@ const _openChannel = () => {
     broadcastChannel.value.addEventListener('message', (event) => {
       const { key, data } = event.data as { key: LolStreamChannelKey, data: any }
       switch (key) {
-        case LolStreamChannelKey.START_GAME:
-          streamStore.setBlueTeam(data.blueTeam)
-          streamStore.setRedTeam(data.redTeam)
+        case LolStreamChannelKey.START_GAME: {
+          const parsedData = JSON.parse(data) as { blueTeam: LolStreamSettingTeam, redTeam: LolStreamSettingTeam }
+          streamStore.setBlueTeam(parsedData.blueTeam)
+          streamStore.setRedTeam(parsedData.redTeam)
           streamStore.startGame()
           break
+        }
         case LolStreamChannelKey.PAUSE_GAME:
           streamStore.pauseGame()
           break

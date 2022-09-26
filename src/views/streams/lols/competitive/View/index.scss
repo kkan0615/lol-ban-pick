@@ -1,7 +1,37 @@
 .page-container {
-  @apply tw-h-screen;
+  @apply tw-h-screen tw-flex tw-flex-col;
 
-  .controller-header {
-    @apply tw-flex;
+  .view-header {
+    @apply tw-flex tw-shrink;
+
+    &-team {
+      @apply tw-w-2/5;
+      @apply tw-flex;
+      @apply tw-px-2 tw-py-4;
+      @apply tw-text-5xl
+    }
+
+    &-counter {
+      @apply tw-w-1/5;
+      @apply tw-px-2 tw-py-4;
+      @apply tw-text-center
+    }
+  }
+
+  .view-content {
+    @apply tw-flex tw-h-1 tw-grow;
+
+    &-team {
+      @apply tw-w-1/3;
+    }
+  }
+
+  .view-bottom {
+    @apply tw-flex tw-shrink;
+    @apply tw-px-2 tw-py-4;
+
+    &-team {
+      @apply tw-w-1/3;
+    }
   }
 }

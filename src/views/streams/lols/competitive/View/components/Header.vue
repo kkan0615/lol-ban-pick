@@ -1,29 +1,49 @@
 <template>
   <header
-    class="controller-header"
+    class="view-header"
   >
     <div
-      class="tw-w-2/5 tw-flex"
+      class="view-header-team"
     >
-      <div>
+      <div
+        class="tw-w-1/3 tw-text-center"
+      >
         {{ blueTeam.win || 0 }}
       </div>
-      <div>
-        {{ blueTeam.name }}
+      <div
+        class="tw-w-1/3 tw-text-center"
+      >
+        {{ blueTeam.name || 'name' }}
+      </div>
+      <div
+        class="tw-w-1/3 tw-text-center"
+      >
+        logo
       </div>
     </div>
     <div
-      class="tw-w-1/5 tw-flex"
+      class="view-header-counter"
     >
-      {{ seconds }}
+      <h3>
+        {{ seconds }}
+      </h3>
     </div>
     <div
-      class="tw-w-2/5 tw-flex"
+      class="view-header-team"
     >
-      <div>
-        {{ redTeam.name }}
+      <div
+        class="tw-w-1/3 tw-text-center"
+      >
+        logo
       </div>
-      <div>
+      <div
+        class="tw-w-1/3 tw-text-center"
+      >
+        {{ redTeam.name || 'name' }}
+      </div>
+      <div
+        class="tw-w-1/3 tw-text-center"
+      >
         {{ redTeam.win || 0 }}
       </div>
     </div>

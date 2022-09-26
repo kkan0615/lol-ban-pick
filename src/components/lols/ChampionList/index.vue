@@ -47,10 +47,12 @@ import LolChampionListChampion from '@/components/lols/ChampionList/components/C
 interface Props {
   championList: LolChampionBanPick[]
   version: string
+  disable: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   championList: () => [],
-  version: ''
+  version: '',
+  disable: false,
 })
 const emit = defineEmits<{
   (e: 'clicked', champion: LolChampionBanPick): void
@@ -65,7 +67,9 @@ const championListBySearch = computed(() => {
 })
 
 const clickChampion = (champion: LolChampionBanPick) => {
-  emit('clicked', champion)
+  if (!props.disable) {
+    emit('clicked', champion)
+  }
 }
 
 </script>

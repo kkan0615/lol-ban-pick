@@ -9,6 +9,7 @@ export interface LolStreamSettingTeam {
   logo: string
   name: string
   win: number
+  color: string
 }
 
 export type LolStreamSettingTeamForm = Partial<LolStreamSettingTeam>

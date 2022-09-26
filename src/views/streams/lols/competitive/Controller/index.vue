@@ -86,6 +86,7 @@
           <LolChampionList
             :version="version"
             :champion-list="Object.values(championList)"
+            :disable="status !== 'running'"
             @clicked="clickChampion"
           />
         </div>
@@ -173,6 +174,7 @@ const onClickContinueBtn = () => {
 }
 
 const onClickRestGameBtn = () => {
+  streamStore.resetGame()
   broadcastChannel.value?.postMessage({ key: LolStreamChannelKey.RESET_GAME })
 
 }

@@ -15,8 +15,8 @@ export interface LolCompetitiveStream {
   redTeamPlayerList: string[]
   blueTeamPickList: LolStreamPick[]
   redTeamPickList: LolStreamPick[]
-  blueTeamBanList: LolStreamPick[]
-  redTeamBanList: LolStreamPick[]
+  blueTeamBanList: LolChampion[]
+  redTeamBanList: LolChampion[]
 }
 
 const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
@@ -115,50 +115,32 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
 
       switch (this.step) {
         case LolCompetitiveStep.BLUE_BAN_1: {
-          this.blueTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.blueTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.RED_BAN_1: {
-          this.redTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.redTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.BLUE_BAN_2: {
-          this.blueTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.blueTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.RED_BAN_2: {
-          this.redTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.redTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.BLUE_BAN_3: {
-          this.blueTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.blueTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.RED_BAN_3: {
-          this.redTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.redTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
@@ -211,34 +193,22 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
           break
         }
         case LolCompetitiveStep.RED_BAN_4: {
-          this.redTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.redTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.BLUE_BAN_4: {
-          this.blueTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.blueTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.RED_BAN_5: {
-          this.redTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.redTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
         case LolCompetitiveStep.BLUE_BAN_5: {
-          this.blueTeamBanList.push({
-            champion: champion,
-            spellList: [undefined, undefined],
-          })
+          this.blueTeamBanList.push(champion)
           lolStore.championList[champion.id].banded = true
           break
         }
@@ -291,40 +261,40 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
       --this.step
       switch (this.step) {
         case LolCompetitiveStep.BLUE_BAN_1: {
-          const element = this.blueTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.blueTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           this.status = 'ready'
           break
         }
         case LolCompetitiveStep.RED_BAN_1: {
-          const element = this.redTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.redTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_2: {
-          const element = this.blueTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.blueTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_2: {
-          const element = this.redTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.redTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_3: {
-          const element = this.blueTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.blueTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_3: {
-          const element = this.redTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.redTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_PICK_1: {
@@ -364,27 +334,27 @@ const useLolCompetitiveStreamStore = defineStore('lolCompetitiveStream', {
           break
         }
         case LolCompetitiveStep.RED_BAN_4: {
-          const element = this.redTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.redTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_4: {
-          const element = this.blueTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.blueTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_5: {
-          const element = this.redTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.redTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_5: {
-          const element = this.blueTeamBanList.pop()
-          if (element)
-            lolStore.championList[element.champion.id].banded = false
+          const champion = this.blueTeamBanList.pop()
+          if (champion)
+            lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_PICK_4: {
