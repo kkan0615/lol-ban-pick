@@ -3,8 +3,6 @@
     class="tw-h-full tw-flex tw-flex-col tw-space-y-2"
   >
     <StreamLolCompetitiveControllerChampionListChampion
-      v-for=""
-      :champion=""
       :version="version"
     />
   </div>
