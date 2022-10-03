@@ -11,9 +11,10 @@
       <div
         class="view-content-team"
       >
-        <div>
-          {{ blueTeamPickList.map((champion) => champion.champion.name) }}
-        </div>
+        <stream-lol-competitive-view-champion-list
+          :pick-list="blueTeamPickList"
+          :version="version"
+        />
       </div>
       <div
         class="view-content-team"
@@ -71,6 +72,7 @@ import { LolChampionBanPick } from '@/types/models/lols/champion'
 import { storeToRefs } from 'pinia'
 import LolBanList from '@/components/lols/BanList/index.vue'
 import useLolStore from '@/store/modules/lol'
+import StreamLolCompetitiveViewChampionList from '@/views/streams/lols/competitive/View/components/ChampionList.vue'
 
 const route = useRoute()
 const streamStore = useLolCompetitiveStreamStore()

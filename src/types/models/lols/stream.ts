@@ -1,5 +1,4 @@
-import { LolChampion } from '@/types/models/lols/champion'
-import { LolSummonSpell } from '@/types/models/lols/summonSpell'
+import { LolCompetitivePick } from '@/types/models/lols/competitive'
 
 export interface LolStreamPlayer {
   name: string
@@ -20,10 +19,7 @@ export interface LolStreamSetting {
   redTeam: LolStreamSettingTeam
 }
 
-export interface LolStreamPick {
-  champion: LolChampion
-  spellList: [LolSummonSpell | undefined, LolSummonSpell | undefined],
-}
+export type LolStreamPick = LolCompetitivePick
 
 export enum LolStreamChannelKey {
   'START_GAME' = 'startGame',

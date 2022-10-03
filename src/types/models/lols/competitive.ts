@@ -1,3 +1,6 @@
+import { LolChampion } from '@/types/models/lols/champion'
+import { LolSummonSpell } from '@/types/models/lols/summonSpell'
+
 export enum LolCompetitiveStep {
   'BLUE_BAN_1',
   'RED_BAN_1',
@@ -20,4 +23,16 @@ export enum LolCompetitiveStep {
   'BLUE_PICK_5',
   'RED_PICK_5',
   'END'
+}
+
+export interface LolCompetitiveTeam {
+  logo?: string
+  name: string
+  win?: number
+  color?: string
+}
+
+export interface LolCompetitivePick {
+  champion: LolChampion
+  spellList: [LolSummonSpell | undefined, LolSummonSpell | undefined],
 }
