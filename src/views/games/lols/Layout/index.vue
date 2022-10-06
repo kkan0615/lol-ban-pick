@@ -7,21 +7,21 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import useLolStore from '@/store/modules/lol'
 
-const router = useRouter()
-const route = useRoute()
+const lolStore = useLolStore()
 
-const _openViewAndController = async () => {
-  const { channel } = route.query
-  // Open view
-  const viewRoute = router.resolve({ name: 'StreamLolCompetitiveView', query: { channel } })
-  window.open(viewRoute.href, '_blank')
-  // Redirect to controller
-  await router.replace({ name: 'StreamLolCompetitiveController', query: { channel } })
-}
+const isLoading = ref(true)
+const isError = ref(false)
 
-if (route.name === 'StreamLolCompetitiveLayout') {
-  _openViewAndController()
+try {
+  await lolStore.loadVersionList()
+  await lolStore.loadLanguageList()
+  await lolStore.loadChampionList()
+} catch (e) {
+  console.error(e)
+  isError.value = true
+} finally {
+  isLoading.value = false
 }
 </script>

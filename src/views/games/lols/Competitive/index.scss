@@ -1,0 +1,27 @@
+.lol-competitive-container {
+  @apply tw-h-screen tw-flex tw-flex-col;
+
+  .view {
+    @apply tw-shrink;
+
+    .content {
+      @apply tw-flex;
+    }
+  }
+
+  .controller {
+    @apply tw-grow tw-h-1 tw-py-4;
+
+    .content {
+      @apply tw-flex tw-space-x-2 tw-h-full;
+
+      .champion-list {
+        @apply tw-w-4/5 tw-h-full;
+      }
+
+      .others {
+        @apply tw-w-1/5 tw-flex tw-flex-col tw-gap-2;
+      }
+    }
+  }
+}

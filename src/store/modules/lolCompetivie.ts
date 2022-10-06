@@ -204,6 +204,9 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
           break
         }
       }
+
+      // Next step
+      this.step++
     },
     /**
      * back to prev step
@@ -333,6 +336,8 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
           break
         }
       }
+
+      // Previous step
       --this.step
     },
   }

@@ -47,7 +47,7 @@ import LolChampionListChampion from '@/components/lols/ChampionList/components/C
 interface Props {
   championList: LolChampionBanPick[]
   version: string
-  disable: boolean
+  disable?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   championList: () => [],

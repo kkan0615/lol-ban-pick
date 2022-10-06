@@ -1,26 +1,9 @@
 <template>
-  <div>
-    <div
-      class="tw-flex tw-space-x-2 tw-p-2"
-    >
-      <div
-        class="tw-ml-auto"
-      />
-      <v-btn
-        :disabled="LolCompetitiveStep.BLUE_BAN_1 === step"
-        color="warning"
-      >
-        Prev step
-      </v-btn>
-      <v-btn
-        color="error"
-      >
-        Reset
-      </v-btn>
-    </div>
-    <div>
-      lol competitive
-    </div>
+  <div
+    class="lol-competitive-container page-content"
+  >
+    <LolCompetitiveView />
+    <LolCompetitiveController />
   </div>
 </template>
 <script lang="ts">
@@ -29,12 +12,12 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import useLolCompetitiveStore from '@/store/modules/lolCompetivie'
-import { storeToRefs } from 'pinia'
-import { LolCompetitiveStep } from '@/types/models/lols/competitive'
+import LolCompetitiveView from '@/views/games/lols/Competitive/components/View.vue'
+import LolCompetitiveController from '@/views/games/lols/Competitive/components/Controller.vue'
 
-const competitiveStore = useLolCompetitiveStore()
-const { step } = storeToRefs(competitiveStore)
 </script>
-
-
+<style
+  lang="scss"
+>
+@import "./index";
+</style>

@@ -430,7 +430,7 @@ module.exports = {
         }, // info ends
       }, // colors end
       maxWidth: {
-        'content': '980px',
+        'content': '1280px',
       }, // maxWidth ends
     },
   },

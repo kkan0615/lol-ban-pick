@@ -15,7 +15,6 @@ export default {
 <script setup lang="ts">
 import { LolChampionBanPick } from '@/types/models/lols/champion'
 import { defineProps } from 'vue'
-import LolChampionListChampion from '@/components/lols/ChampionList/components/Champion.vue'
 import StreamLolCompetitiveControllerChampionListChampion
   from '@/views/streams/lols/competitive/Controller/components/ChampionList/components/Champion.vue'
 
