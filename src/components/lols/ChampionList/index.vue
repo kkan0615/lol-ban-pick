@@ -13,11 +13,15 @@
           density="compact"
           hide-details
           placeholder="search"
+          variant="solo"
         />
       </div>
     </div>
     <div
-      class="tw-grid tw-grid-cols-6 tw-gap-2 tw-overflow-auto"
+      class="tw-grid tw-gap-4 tw-overflow-auto"
+      :class="{
+        [`tw-grid-cols-${cols}`]: true,
+      }"
     >
       <LolChampionListChampion
         v-for="champion in championListBySearch"
@@ -26,11 +30,6 @@
         :version="version"
         @clicked="clickChampion"
       />
-      <!--      <LolChampionListChampion-->
-      <!--        :champion="championListBySearch[0]"-->
-      <!--        :version="version"-->
-      <!--        @clicked="clickChampion"-->
-      <!--      />-->
     </div>
   </div>
 </template>
@@ -47,11 +46,13 @@ import LolChampionListChampion from '@/components/lols/ChampionList/components/C
 interface Props {
   championList: LolChampionBanPick[]
   version: string
+  cols?: number
   disable?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   championList: () => [],
   version: '',
+  cols: 10,
   disable: false,
 })
 const emit = defineEmits<{
@@ -69,6 +70,8 @@ const championListBySearch = computed(() => {
 const clickChampion = (champion: LolChampionBanPick) => {
   if (!props.disable) {
     emit('clicked', champion)
+    // Reset search value
+    searchText.value = ''
   }
 }
 
