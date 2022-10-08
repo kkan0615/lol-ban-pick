@@ -2,36 +2,37 @@
   <v-select
     :items="items"
     variant="outlined"
-    label="Version"
+    label="Language"
     density="compact"
-    :model-value="version"
+    :model-value="language"
     hide-details
     @update:model-value="handleChange"
   />
 </template>
 <script lang="ts">
 export default {
-  name: 'LolVersionSelect',
+  name: 'LolLanguageSelect',
 }
 </script>
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { LolLanguagesType } from '@/types/models/lols/language'
 
 interface Props {
-  version: string
-  items: string[]
+  language: LolLanguagesType
+  items: LolLanguagesType[]
 }
 const props = withDefaults(defineProps<Props>(), {
-  version: '',
+  language: 'en_US',
   items: () => [],
 })
 
 const emit = defineEmits<{
-  (e: 'changed', newVersion: string): void
+  (e: 'changed', newLanguage: LolLanguagesType): void
 }>()
 
-const handleChange = (newVersion: string) => {
-  emit('changed', newVersion)
+const handleChange = (newLanguage: LolLanguagesType) => {
+  emit('changed', newLanguage)
 }
 </script>
 

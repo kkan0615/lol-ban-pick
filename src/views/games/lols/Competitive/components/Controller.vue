@@ -29,6 +29,20 @@
           Reset
         </v-btn>
         <div>
+          <LolVersionSelect
+            :version="version"
+            :items="versionList"
+            @changed="onChangedVersion"
+          />
+        </div>
+        <div>
+          <LolLanguageSelect
+            :language="language"
+            :items="languageList"
+            @changed="onChangedLanguage"
+          />
+        </div>
+        <div>
           @TODO: add Team setting dialog
         </div>
       </div>
@@ -44,14 +58,17 @@ export default {
 import useLolCompetitiveStore from '@/store/modules/lolCompetivie'
 import { storeToRefs } from 'pinia'
 import { LolCompetitiveStep } from '@/types/models/lols/competitive'
-import LolChampionList from '@/components/lols/ChampionList/index.vue'
 import useLolStore from '@/store/modules/lol'
 import { LolChampionBanPick } from '@/types/models/lols/champion'
+import LolVersionSelect from '@/components/lols/VersionSelect/index.vue'
+import LolLanguageSelect from '@/components/lols/LanguageSelect/index.vue'
+import { LolLanguagesType } from '@/types/models/lols/language'
+import LolChampionList from '@/components/lols/ChampionList/index.vue'
 
 const competitiveStore = useLolCompetitiveStore()
 const lolStore = useLolStore()
 const { step } = storeToRefs(competitiveStore)
-const { championList, version } = storeToRefs(lolStore)
+const { version, versionList, language, languageList, championList } = storeToRefs(lolStore)
 
 /**
  * Champion is clicked in Champion list
@@ -61,5 +78,14 @@ const clickedChampion = (champion: LolChampionBanPick) => {
   if (step.value !== LolCompetitiveStep.END) {
     competitiveStore.nextStep(champion.champion)
   }
+}
+
+const onChangedVersion = (newVersion: string) => {
+  lolStore.setVersion(newVersion)
+}
+
+const onChangedLanguage = (newLanguage: LolLanguagesType) => {
+  lolStore.setLanguage(newLanguage)
+
 }
 </script>

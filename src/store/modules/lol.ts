@@ -42,6 +42,12 @@ const useLolStore = defineStore('lol', {
       this.version = newVersion
     },
     /**
+     * Set version
+     */
+    setLanguage(newLanguage: LolLanguagesType) {
+      this.language = newLanguage
+    },
+    /**
      *
      */
     async loadVersionList () {
