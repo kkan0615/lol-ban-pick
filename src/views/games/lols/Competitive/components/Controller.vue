@@ -10,7 +10,7 @@
       >
         <LolChampionList
           :version="version"
-          :champion-list="Object.values(championList)"
+          :champion-list="ChampionList"
           @clicked="clickedChampion"
         />
       </div>
@@ -20,6 +20,7 @@
         <v-btn
           :disabled="LolCompetitiveStep.BLUE_BAN_1 === step"
           color="warning"
+          @click="onClickPrevBtn"
         >
           Prev step
         </v-btn>
@@ -65,10 +66,10 @@ import LolLanguageSelect from '@/components/lols/LanguageSelect/index.vue'
 import { LolLanguagesType } from '@/types/models/lols/language'
 import LolChampionList from '@/components/lols/ChampionList/index.vue'
 
-const competitiveStore = useLolCompetitiveStore()
 const lolStore = useLolStore()
+const competitiveStore = useLolCompetitiveStore()
+const { version, versionList, language, languageList, ChampionList } = storeToRefs(lolStore)
 const { step } = storeToRefs(competitiveStore)
-const { version, versionList, language, languageList, championList } = storeToRefs(lolStore)
 
 /**
  * Champion is clicked in Champion list
@@ -80,12 +81,15 @@ const clickedChampion = (champion: LolChampionBanPick) => {
   }
 }
 
+const onClickPrevBtn = () => {
+  competitiveStore.prevStep()
+}
+
 const onChangedVersion = (newVersion: string) => {
   lolStore.setVersion(newVersion)
 }
 
 const onChangedLanguage = (newLanguage: LolLanguagesType) => {
   lolStore.setLanguage(newLanguage)
-
 }
 </script>

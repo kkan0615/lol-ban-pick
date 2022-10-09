@@ -20,7 +20,9 @@
     <div
       class="tw-grid tw-gap-4 tw-overflow-auto"
       :class="{
-        [`tw-grid-cols-${cols}`]: true,
+        'tw-grid-cols-6': cols === 6,
+        'tw-grid-cols-10': cols === 10,
+        'tw-grid-cols-12': cols === 12,
       }"
     >
       <LolChampionListChampion

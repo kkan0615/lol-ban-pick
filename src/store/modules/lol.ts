@@ -29,10 +29,9 @@ const useLolStore = defineStore('lol', {
      * Get double count
      * @param state
      */
-    // DoubleCount (state) {
-    //   // @TODO: Add return default language if there is no language.
-    //   return state.count * 2
-    // },
+    ChampionList (state) {
+      return Object.values(state.championList).sort((a, b) => a.champion.name.localeCompare(b.champion.name))
+    },
   },
   actions: {
     /**

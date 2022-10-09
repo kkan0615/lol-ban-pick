@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { LolChampion } from '@/types/models/lols/champion'
 import { LolCompetitivePick, LolCompetitiveStep, LolCompetitiveTeam } from '@/types/models/lols/competitive'
 import useLolStore from '@/store/modules/lol'
+import colors from 'tailwindcss/colors'
 
 export interface LolCompetitive {
   step: LolCompetitiveStep
@@ -20,10 +21,12 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
     return {
       step: 0,
       blueTeam: {
-        name: 'Blue'
+        name: 'Blue',
+        color: colors.blue['500'],
       } as LolCompetitiveTeam,
       redTeam: {
-        name: 'Red'
+        name: 'Red',
+        color: colors.red['500'],
       } as LolCompetitiveTeam,
       blueTeamPlayerList: [],
       redTeamPlayerList: [],
@@ -213,7 +216,6 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
      */
     prevStep () {
       const lolStore = useLolStore()
-      --this.step
       switch (this.step) {
         case LolCompetitiveStep.BLUE_BAN_1: {
           const champion = this.blueTeamBanList.pop()

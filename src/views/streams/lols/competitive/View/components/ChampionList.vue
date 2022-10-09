@@ -33,11 +33,9 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const pickListWithEmpty = computed(() => {
-  console.log(props.pickList)
   const emptyList: LolStreamPick[] = new Array(5 - props.pickList.length).fill(() =>{ return {} as LolStreamPick})
   const result = ([] as LolStreamPick[]).concat(props.pickList).concat(emptyList)
 
-  console.log(result)
   if (props.isRed) {
     return result.reverse()
   }

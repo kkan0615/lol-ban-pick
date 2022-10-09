@@ -6,6 +6,10 @@
 
     .content {
       @apply tw-flex;
+
+      .team {
+        @apply tw-w-5/12 tw-flex tw-flex-col;
+      }
     }
   }
 
