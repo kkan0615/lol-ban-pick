@@ -43,9 +43,10 @@
             @changed="onChangedLanguage"
           />
         </div>
-        <div>
-          @TODO: add Team setting dialog
-        </div>
+        <LolCompetitiveTeamForm />
+        <LolCompetitiveTeamForm
+          red
+        />
       </div>
     </div>
   </div>
@@ -65,6 +66,7 @@ import LolVersionSelect from '@/components/lols/VersionSelect/index.vue'
 import LolLanguageSelect from '@/components/lols/LanguageSelect/index.vue'
 import { LolLanguagesType } from '@/types/models/lols/language'
 import LolChampionList from '@/components/lols/ChampionList/index.vue'
+import LolCompetitiveTeamForm from '@/views/games/lols/Competitive/components/TeamForm.vue'
 
 const lolStore = useLolStore()
 const competitiveStore = useLolCompetitiveStore()

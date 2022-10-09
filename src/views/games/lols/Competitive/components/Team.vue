@@ -11,8 +11,14 @@
         'background': team.color
       }"
     >
-      <div>
-        {{ team.logo }}
+      <div
+        class="tw-p-2"
+      >
+        <img
+          v-if="logoSrc"
+          class="tw-w-20 tw-aspect-square"
+          :src="logoSrc"
+        >
       </div>
       <div
         class="tw-mx-auto"
@@ -73,6 +79,8 @@ const props = withDefaults(defineProps<Props>(), {
   pickList: () => [],
   red: false,
 })
+
+const logoSrc = computed(() => props.team.logo ? URL.createObjectURL(props.team.logo) : null)
 
 const banListWithEmpty = computed(() => {
   const emptyList: LolChampion[] = new Array(5 - props.banList.length).fill(() => { return {} as LolChampion})

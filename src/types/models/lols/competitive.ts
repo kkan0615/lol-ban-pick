@@ -26,11 +26,13 @@ export enum LolCompetitiveStep {
 }
 
 export interface LolCompetitiveTeam {
-  logo?: string
+  logo?: File
   name: string
   win?: number
   color?: string
 }
+
+export type LolCompetitiveTeamUpdateForm = Partial<LolCompetitiveTeam>
 
 export interface LolCompetitivePick {
   champion: LolChampion
