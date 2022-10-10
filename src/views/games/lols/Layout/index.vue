@@ -18,6 +18,7 @@ try {
   await lolStore.loadVersionList()
   await lolStore.loadLanguageList()
   await lolStore.loadChampionList()
+  await lolStore.loadSummonSpellList()
 } catch (e) {
   console.error(e)
   isError.value = true

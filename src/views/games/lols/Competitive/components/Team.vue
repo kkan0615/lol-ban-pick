@@ -49,6 +49,7 @@
         v-for="(pick, index) in pickListWithEmpty"
         :key="`pick-${red ? 'red' : 'blue'}-${index}`"
         :pick="pick"
+        :index="index"
         :red="red"
       />
     </div>
@@ -65,7 +66,6 @@ import { LolCompetitivePick as Pick, LolCompetitiveTeam } from '@/types/models/l
 import LolCompetitivePick from '@/views/games/lols/Competitive/components/Pick.vue'
 import { LolChampion } from '@/types/models/lols/champion'
 import LolCompetitiveBan from '@/views/games/lols/Competitive/components/Ban.vue'
-
 
 interface Props {
   team: LolCompetitiveTeam

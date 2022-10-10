@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { LolLanguagesType } from '@/types/models/lols/language'
-import { LolSummonSpell } from '@/types/models/lols/summonSpell'
+import { LolSummonSpell, LolSummonSpellReq } from '@/types/models/lols/summonSpell'
 import lolRequest from '@/utils/requests/lol'
 import { LolChampionBanPick, LolChampionListReq } from '@/types/models/lols/champion'
 
@@ -31,6 +31,9 @@ const useLolStore = defineStore('lol', {
      */
     ChampionList (state) {
       return Object.values(state.championList).sort((a, b) => a.champion.name.localeCompare(b.champion.name))
+    },
+    ClassicSummonSpellList (state) {
+      return state.spellList.filter(summonSpell => summonSpell.modes.includes('CLASSIC'))
     },
   },
   actions: {
@@ -123,13 +126,19 @@ const useLolStore = defineStore('lol', {
     /**
      *
      */
-    loadSpellList () {
-      this.spellList = []
+    async loadSummonSpellList () {
+      try {
+        const res = await lolRequest.get<LolSummonSpellReq>(`/lolCdnApi/${this.version}/data/${this.language}/summoner.json`)
+        this.spellList = Object.values(res.data.data)
+      } catch (e) {
+        console.error(e)
+        throw e
+      }
     },
     /**
      *
      */
-    resetSpellList () {
+    resetSummonSpellList () {
       this.spellList = []
     },
   }

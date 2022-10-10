@@ -32,3 +32,8 @@ export interface LolSummonSpellImage {
   'w': number
   'h': number
 }
+export interface LolSummonSpellReq {
+  type: string,
+  version: string
+  data: Record<string, LolSummonSpell>
+}
