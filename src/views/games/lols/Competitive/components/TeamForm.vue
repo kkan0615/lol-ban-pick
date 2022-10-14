@@ -55,6 +55,7 @@
           />
           <v-text-field
             v-model="name"
+            label="name"
           />
           <v-color-picker
             v-model="color"

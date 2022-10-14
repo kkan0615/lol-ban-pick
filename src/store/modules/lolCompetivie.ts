@@ -1,10 +1,16 @@
 import { defineStore } from 'pinia'
 import { LolChampion } from '@/types/models/lols/champion'
-import { LolCompetitivePick, LolCompetitiveStep, LolCompetitiveTeam } from '@/types/models/lols/competitive'
+import {
+  LolCompetitivePick,
+  LolCompetitiveSetting,
+  LolCompetitiveStep,
+  LolCompetitiveTeam
+} from '@/types/models/lols/competitive'
 import useLolStore from '@/store/modules/lol'
 import colors from 'tailwindcss/colors'
 
 export interface LolCompetitive {
+  setting: LolCompetitiveSetting
   step: LolCompetitiveStep
   blueTeam: LolCompetitiveTeam
   redTeam: LolCompetitiveTeam
@@ -19,6 +25,9 @@ export interface LolCompetitive {
 const useLolCompetitiveStore = defineStore('lolCompetitive', {
   state: (): LolCompetitive => {
     return {
+      setting: {
+        displaySummonSpell: true
+      } as LolCompetitiveSetting,
       step: 0,
       blueTeam: {
         name: 'Blue',
@@ -47,8 +56,8 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
     // },
   },
   actions: {
-    initTeams() {
-      //
+    setSetting(newSetting: Partial<LolCompetitiveSetting>) {
+      this.setting = { ...this.setting, ...newSetting }
     },
     setBlueTeam(newTeam: Partial<LolCompetitiveTeam>) {
       this.blueTeam = { ...this.blueTeam, ...newTeam }
@@ -342,7 +351,15 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
       // Previous step
       --this.step
     },
-  }
+    swapBluePick(indexOne: number, indexTwo: number) {
+      this.blueTeamPickList = this.blueTeamPickList
+        .splice(indexOne, 1, this.blueTeamPickList.splice(indexTwo, 1, this.blueTeamPickList[indexOne])[0])
+    },
+    swapRedPick(indexOne: number, indexTwo: number) {
+      this.redTeamPickList = this.redTeamPickList
+        .splice(indexOne, 1, this.redTeamPickList.splice(indexTwo, 1, this.redTeamPickList[indexOne])[0])
+    },
+  },
 })
 
 

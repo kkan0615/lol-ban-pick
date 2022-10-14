@@ -29,6 +29,7 @@ const darkTheme: ThemeDefinition = {
   dark: true,
   colors: {
     background: colors.zinc['900'],
+    'on-background': colors.white,
     primary: '#41B883',
     'on-primary': colors.white,
     secondary: '#34495E',

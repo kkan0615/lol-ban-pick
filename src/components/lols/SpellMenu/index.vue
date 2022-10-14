@@ -76,7 +76,6 @@ const emit = defineEmits<{
 
 const onClickSummonSpell = (summonSpell: LolSummonSpell) => {
   if (props.modelValue.id !== summonSpell.id ) {
-    console.log('test2')
     emit('update:modelValue', summonSpell)
   }
 }

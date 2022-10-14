@@ -43,6 +43,7 @@
             @changed="onChangedLanguage"
           />
         </div>
+        <LolCompetitiveSettingForm />
         <LolCompetitiveTeamForm />
         <LolCompetitiveTeamForm
           red
@@ -67,6 +68,7 @@ import LolLanguageSelect from '@/components/lols/LanguageSelect/index.vue'
 import { LolLanguagesType } from '@/types/models/lols/language'
 import LolChampionList from '@/components/lols/ChampionList/index.vue'
 import LolCompetitiveTeamForm from '@/views/games/lols/Competitive/components/TeamForm.vue'
+import LolCompetitiveSettingForm from '@/views/games/lols/Competitive/components/SettingForm.vue'
 
 const lolStore = useLolStore()
 const competitiveStore = useLolCompetitiveStore()

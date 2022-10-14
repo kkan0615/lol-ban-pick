@@ -12,7 +12,7 @@
       :src="src"
     >
     <div
-      v-if="pick.spellList"
+      v-if="pick.spellList && setting.displaySummonSpell"
       class="tw-absolute tw-space-x-2 tw-bottom-0 tw-left-0 tw-flex tw-w-full tw-p-2"
     >
       <LolSummonSpellMenu
@@ -61,12 +61,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const { ClassicSummonSpellList, version } = storeToRefs(lolStore)
-const { blueTeamPickList, redTeamPickList } = storeToRefs(competitiveStore)
+const { setting, blueTeamPickList, redTeamPickList } = storeToRefs(competitiveStore)
 
 const src = computed(() => props.pick.champion ? `/lolCdnApi/img/champion/loading/${props.pick.champion.id}_0.jpg` : '')
 
 const onUpdateFirstSummonSpell = (newSummonSpell: LolSummonSpell) => {
-  console.log('test')
   if (props.red) {
     redTeamPickList.value[props.index].spellList[0] = newSummonSpell
   } else{

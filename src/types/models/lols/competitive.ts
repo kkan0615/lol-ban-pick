@@ -38,3 +38,7 @@ export interface LolCompetitivePick {
   champion: LolChampion
   spellList: [LolSummonSpell | undefined, LolSummonSpell | undefined],
 }
+
+export interface LolCompetitiveSetting {
+  displaySummonSpell: boolean
+}
