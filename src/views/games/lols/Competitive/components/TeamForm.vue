@@ -1,20 +1,15 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    class="tw-max-w-md"
-    @update:modelValue="onUpdateDialog"
+  <q-btn
+    color="primary"
+    @click="onClickOpenBtn"
   >
-    <template #activator="{ props }">
-      <v-btn
-        color="primary"
-        v-bind="props"
-      >
-        {{ btnText }}
-      </v-btn>
-    </template>
-
-    <v-card>
-      <v-card-title
+    {{ btnText }}
+  </q-btn>
+  <q-dialog
+    v-model="dialog"
+  >
+    <q-card>
+      <q-card-section
         class="tw-flex tw-items-center"
       >
         <div
@@ -25,18 +20,20 @@
         <div
           class="tw-ml-auto"
         >
-          <v-btn
-            icon
-            color="danger"
+          <q-btn
+            v-close-popup
+            icon="close"
+            flat
+            round
+            dense
             @click="dialog = false"
-          >
-            <v-icon>close</v-icon>
-          </v-btn>
+          />
         </div>
-      </v-card-title>
-      <v-divider />
-      <v-card-text>
-        <v-form
+      </q-card-section>
+      <q-separator />
+      <q-card-section>
+        <q-form
+          class="tw-flex tw-flex-col tw-space-y-4"
           @submit="onSubmit"
         >
           <div
@@ -48,35 +45,38 @@
               :src="previewImageSrc"
             >
           </div>
-          <v-file-input
+          <q-file
+            outlined
             accept="image/*"
             label="File input"
             @update:modelValue="onUpdateFile"
           />
-          <v-text-field
+          <q-input
             v-model="name"
             label="name"
+            outlined
+            dense
           />
-          <v-color-picker
+          <q-color
             v-model="color"
             mode="hex"
           />
-        </v-form>
+        </q-form>
         <div
           class="tw-mt-4 tw-flex"
         >
-          <v-btn
+          <q-btn
             type="submit"
             class="tw-ml-auto"
             color="primary"
             @click="onSubmit"
           >
             submit
-          </v-btn>
+          </q-btn>
         </div>
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 <script lang="ts">
 export default {
@@ -107,20 +107,21 @@ const color = ref('')
 const btnText = computed(() => `change ${props.red ? 'red' : 'blue'} team`)
 const previewImageSrc = computed(() => logo.value ? URL.createObjectURL(logo.value) : null)
 
-const onUpdateDialog = (bool: boolean) => {
-  if (bool) {
-    if (props.red) {
-      name.value = redTeam.value.name
-      win.value = redTeam.value.win
-      color.value = redTeam.value.color || ''
-      logo.value = redTeam.value.logo
-    } else {
-      name.value = blueTeam.value.name
-      win.value = blueTeam.value.win
-      color.value = blueTeam.value.color || ''
-      logo.value = blueTeam.value.logo
-    }
+const onClickOpenBtn = () => {
+  // Initialize data
+  if (props.red) {
+    name.value = redTeam.value.name
+    win.value = redTeam.value.win
+    color.value = redTeam.value.color || ''
+    logo.value = redTeam.value.logo
+  } else {
+    name.value = blueTeam.value.name
+    win.value = blueTeam.value.win
+    color.value = blueTeam.value.color || ''
+    logo.value = blueTeam.value.logo
   }
+  // Open dialog
+  dialog.value = true
 }
 
 const onUpdateFile = (fileList: File[]) => {

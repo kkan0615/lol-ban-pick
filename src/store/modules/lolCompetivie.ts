@@ -227,121 +227,121 @@ const useLolCompetitiveStore = defineStore('lolCompetitive', {
       const lolStore = useLolStore()
       switch (this.step) {
         case LolCompetitiveStep.BLUE_BAN_1: {
-          const champion = this.blueTeamBanList.pop()
+          const champion = this.blueTeamBanList[this.blueTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_1: {
-          const champion = this.redTeamBanList.pop()
+          const champion = this.redTeamBanList[this.redTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_2: {
-          const champion = this.blueTeamBanList.pop()
+          const champion = this.blueTeamBanList[this.blueTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_2: {
-          const champion = this.redTeamBanList.pop()
+          const champion = this.redTeamBanList[this.redTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_3: {
-          const champion = this.blueTeamBanList.pop()
+          const champion = this.blueTeamBanList[this.blueTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_3: {
-          const champion = this.redTeamBanList.pop()
+          const champion = this.redTeamBanList[this.redTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_PICK_1: {
-          const element = this.blueTeamPickList.pop()
+          const element = this.blueTeamPickList[this.blueTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.RED_PICK_1: {
-          const element = this.redTeamPickList.pop()
+          const element = this.redTeamPickList[this.redTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.RED_PICK_2: {
-          const element = this.redTeamPickList.pop()
+          const element = this.redTeamPickList[this.redTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.BLUE_PICK_2: {
-          const element = this.blueTeamPickList.pop()
+          const element = this.blueTeamPickList[this.blueTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.BLUE_PICK_3: {
-          const element = this.blueTeamPickList.pop()
+          const element = this.blueTeamPickList[this.blueTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.RED_PICK_3: {
-          const element = this.redTeamPickList.pop()
+          const element = this.redTeamPickList[this.redTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.RED_BAN_4: {
-          const champion = this.redTeamBanList.pop()
+          const champion = this.redTeamBanList[this.redTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_4: {
-          const champion = this.blueTeamBanList.pop()
+          const champion = this.blueTeamBanList[this.blueTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_BAN_5: {
-          const champion = this.redTeamBanList.pop()
+          const champion = this.redTeamBanList[this.redTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.BLUE_BAN_5: {
-          const champion = this.blueTeamBanList.pop()
+          const champion = this.blueTeamBanList[this.blueTeamBanList.length - 1]
           if (champion)
             lolStore.championList[champion.id].banded = false
           break
         }
         case LolCompetitiveStep.RED_PICK_4: {
-          const element = this.redTeamPickList.pop()
+          const element = this.redTeamPickList[this.redTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.BLUE_PICK_4: {
-          const element = this.blueTeamPickList.pop()
+          const element = this.blueTeamPickList[this.blueTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.BLUE_PICK_5: {
-          const element = this.blueTeamPickList.pop()
+          const element = this.blueTeamPickList[this.blueTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break
         }
         case LolCompetitiveStep.RED_PICK_5: {
-          const element = this.redTeamPickList.pop()
+          const element = this.redTeamPickList[this.redTeamPickList.length - 1]
           if (element)
             lolStore.championList[element.champion.id].picked = false
           break

@@ -8,10 +8,12 @@
       <div
         class="tw-ml-auto tw-w-80"
       >
-        <v-text-field
+        <q-input
           v-model="searchText"
-          density="compact"
+          dense
           hide-details
+          outlined
+          filled
           placeholder="search"
           variant="solo"
         />

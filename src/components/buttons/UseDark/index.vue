@@ -4,19 +4,15 @@
     @click="onClickToggleDarkBtn"
   >
     <!-- Dark mode -->
-    <span
+    <q-icon
       v-if="isDark"
-      class="material-symbols-outlined"
-    >
-      dark_mode
-    </span>
+      name="dark_mode"
+    />
     <!-- Light mode -->
-    <span
+    <q-icon
       v-else
-      class="material-symbols-outlined"
-    >
-      light_mode
-    </span>
+      name="light_mode"
+    />
   </button>
 </template>
 <script lang="ts">
@@ -26,15 +22,19 @@ export default {
 </script>
 <script setup lang="ts">
 import { useDarkOption } from '@/types/system'
-import { useTheme } from 'vuetify'
+import { useQuasar } from 'quasar'
 
-const isDark = useDark(useDarkOption)
-const toggleDark = useToggle(isDark)
-const theme = useTheme()
+const q = useQuasar()
+const mode = useColorMode({
+  modes: {
+    dark: 'tw-dark',
+    light: 'tw-light',
+  }
+})
 
 const onClickToggleDarkBtn = () => {
-  toggleDark()
-  theme.global.name.value = isDark.value ? 'darkTheme' : 'lightTheme'
+  mode.value = mode.value === 'dark' ? 'light' : 'dark'
+  q.dark.toggle()
 }
 </script>
 <style

@@ -147,3 +147,6 @@ pnpm run test:e2e
 # Apis
 ## Lols
 (https://developer.riotgames.com/docs/lol)
+
+# Move to boilerplate
+- Change useDarkMode to useColorMode

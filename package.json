@@ -14,18 +14,20 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@quasar/extras": "^1.15.5",
     "@vueuse/components": "^9.2.0",
     "@vueuse/core": "^9.0.2",
     "@vueuse/head": "^0.7.9",
     "axios": "^0.27.2",
     "pinia": "^2.0.22",
+    "quasar": "^2.10.0",
     "sass": "^1.52.3",
     "vue": "^3.2.25",
     "vue-i18n": "next",
-    "vue-router": "4",
-    "vuetify": "3.0.0-beta.11"
+    "vue-router": "4"
   },
   "devDependencies": {
+    "@quasar/vite-plugin": "^1.2.3",
     "@types/node": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "^5.36.2",

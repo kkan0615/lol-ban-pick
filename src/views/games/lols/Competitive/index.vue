@@ -1,6 +1,6 @@
 <template>
   <div
-    class="lol-competitive-container page-content tw-max-w-[1600px] tw-py-2"
+    class="lol-competitive-container page-content tw-max-w-[1600px] tw-pt-2 tw-pb-8"
   >
     <LolCompetitiveView />
     <LolCompetitiveController />

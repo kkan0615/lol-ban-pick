@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import { VitePWA } from 'vite-plugin-pwa'
 import AutoImport from 'unplugin-auto-import/vite'
 import alias from './config/alias'
@@ -9,7 +10,12 @@ export default defineConfig({
   plugins: [
     // Vue 3
     vue({
-      reactivityTransform: false
+      reactivityTransform: false,
+      template: { transformAssetUrls }, // For Quasar UI framework
+    }),
+    // For Quasar UI framework
+    quasar({
+      sassVariables: 'src/styles/libs/quasar-variables.sass'
     }),
     // Auto-importing
     AutoImport({

@@ -21,6 +21,7 @@
       @apply tw-divide-y;
       &-item {
         @apply hover:tw-bg-zinc-800 hover:tw-text-white;
+        @apply dark:tw-text-white dark:tw-bg-zinc-500;
         @apply tw-cursor-pointer;
         @apply tw-py-2 tw-px-4;
         &--active {

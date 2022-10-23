@@ -17,18 +17,19 @@
       <div
         class="others"
       >
-        <v-btn
+        <q-btn
           :disabled="LolCompetitiveStep.BLUE_BAN_1 === step"
           color="warning"
           @click="onClickPrevBtn"
         >
           Prev step
-        </v-btn>
-        <v-btn
-          color="error"
+        </q-btn>
+        <q-btn
+          color="negative"
+          @click="onClickResetGameBtn"
         >
-          Reset
-        </v-btn>
+          Reset Game
+        </q-btn>
         <div>
           <LolVersionSelect
             :version="version"
@@ -87,6 +88,10 @@ const clickedChampion = (champion: LolChampionBanPick) => {
 
 const onClickPrevBtn = () => {
   competitiveStore.prevStep()
+}
+
+const onClickResetGameBtn = () => {
+  competitiveStore.resetGame()
 }
 
 const onChangedVersion = (newVersion: string) => {

@@ -1,5 +1,5 @@
 <template>
-  <v-menu
+  <q-menu
     top
     offset-y
   >
@@ -23,8 +23,8 @@
         </div>
       </button>
     </template>
-    <v-card>
-      <v-card-text
+    <q-card>
+      <q-card-section
         class="tw-grid tw-grid-cols-2 tw-gap-2"
       >
         <div
@@ -44,9 +44,9 @@
             >
           </button>
         </div>
-      </v-card-text>
-    </v-card>
-  </v-menu>
+      </q-card-section>
+    </q-card>
+  </q-menu>
 </template>
 <script lang="ts">
 export default {

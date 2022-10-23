@@ -23,41 +23,41 @@
         <div>
           {{ status }}
         </div>
-        <v-btn
+        <q-btn
           v-if="status !== 'running' && status !== 'pause'"
           color="primary"
           @click="onClickStartBtn"
         >
           Start game
-        </v-btn>
-        <v-btn
+        </q-btn>
+        <q-btn
           v-if="status === 'pause'"
           color="primary"
           @click="onClickContinueBtn"
         >
           Continue game
-        </v-btn>
-        <v-btn
+        </q-btn>
+        <q-btn
           v-if="status === 'running'"
           color="primary"
           @click="onClickPauseBtn"
         >
           Pause game
-        </v-btn>
-        <v-btn
+        </q-btn>
+        <q-btn
           v-if="status === 'done' || status === 'pause'"
           color="warning"
           @click="onClickRestGameBtn"
         >
           Reset game
-        </v-btn>
-        <v-btn
+        </q-btn>
+        <q-btn
           v-if="status === 'done' || status === 'pause'"
           color="error"
           @click="onClickRestAllBtn"
         >
           Reset all
-        </v-btn>
+        </q-btn>
       </div>
     </div>
     <div
@@ -70,11 +70,11 @@
           class="tw-w-1/5"
         >
           left
-          <v-text-field
+          <q-input
             v-model="blueTeam.name"
             label="Team name"
           />
-          <v-text-field
+          <q-input
             v-model="blueTeam.win"
             label="Team win"
             type="number"

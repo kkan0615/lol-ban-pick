@@ -1,20 +1,16 @@
 <template>
-  <v-dialog
+  <q-btn
+    color="primary"
+    @click="dialog = true"
+  >
+    change setting
+  </q-btn>
+  <q-dialog
     v-model="dialog"
-    class="tw-max-w-md"
     @update:modelValue="onUpdateDialog"
   >
-    <template #activator="{ props }">
-      <v-btn
-        color="primary"
-        v-bind="props"
-      >
-        change setting
-      </v-btn>
-    </template>
-
-    <v-card>
-      <v-card-title
+    <q-card>
+      <q-card-section
         class="tw-flex tw-items-center"
       >
         <div
@@ -25,41 +21,42 @@
         <div
           class="tw-ml-auto"
         >
-          <v-btn
-            icon
-            color="danger"
+          <q-btn
+            v-close-popup
+            icon="close"
+            flat
+            round
+            dense
             @click="dialog = false"
-          >
-            <v-icon>close</v-icon>
-          </v-btn>
+          />
         </div>
-      </v-card-title>
-      <v-divider />
-      <v-card-text>
-        <v-form
+      </q-card-section>
+      <q-separator />
+      <q-card-section>
+        <q-form
           @submit="onSubmit"
         >
-          <v-checkbox
+          <q-checkbox
             v-model="displaySummonSpell"
             color="primary"
             label="Use Summon spell"
           />
-        </v-form>
+        </q-form>
         <div
           class="tw-mt-4 tw-flex"
         >
-          <v-btn
+          <q-btn
             type="submit"
             class="tw-ml-auto"
             color="primary"
             @click="onSubmit"
           >
             submit
-          </v-btn>
+          </q-btn>
         </div>
-      </v-card-text>
-    </v-card>
-  </v-dialog>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 <script lang="ts">
 export default {

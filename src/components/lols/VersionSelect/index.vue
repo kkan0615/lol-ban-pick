@@ -1,9 +1,10 @@
 <template>
-  <v-select
-    :items="items"
+  <q-select
+    :options="items"
     variant="outlined"
     label="Version"
-    density="compact"
+    outlined
+    dense
     :model-value="version"
     hide-details
     @update:model-value="handleChange"
